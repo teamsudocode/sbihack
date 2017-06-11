@@ -108,5 +108,38 @@
         "ageConstraint": [18],
         "customerType": ["non-salaried", "professionals", "self-employed", "business-firm"],
         "comments": "Helps you fill the needs of funds if you fell short."
-    }
+    },
+    {
+        "productName": "SBI Top Up Home Loan",
+        "interestRate": [9.50, 10.95],
+        "principalRange": [200000, 50000000],
+        "tenure": null,
+        "flexiPay": null,
+        "prePaymentPenalty": null,
+        "ageConstraint": [18],
+        "customerType": ["already loan owners"],
+        "comments": "For all home loans with satisfactory repayment track for one year. Valid mortgage in favor of bank. Much more conditions... find on bank's website."
+    },
+    {
+        "productName": "SBI Reverse Mortgage Loan",
+        "interestRate": [11.90],
+        "principalRange": null,
+        "tenure": null,
+        "flexiPay": null,
+        "prePaymentPenalty": null,
+        "ageConstraint": [18],
+        "customerType": ["house owning senior citizens"],
+        "comments": "For renovation/repair/medical/personal uses."
+    },
+    {
+        "productName": "SBI Hamara Ghar",
+        "interestRate": null,
+        "principalRange": [0, 3000000],
+        "tenure": null,
+        "flexiPay": null,
+        "prePaymentPenalty": true,
+        "ageConstraint": [18],
+        "customerType": ["affordable segment", "middle class"],
+        "comments": "Targets the affordable segment."
+    },
 ]

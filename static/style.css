@@ -1,0 +1,47 @@
+:root{
+    --sapphire-blue: #00A8E2;
+}
+
+body {
+    background-color: #F7F9FA;
+}
+
+@font-face {
+    font-family: 'proxima_nova_light';
+    src: url('fonts/proximanova-light-webfont.woff2') format('woff2'), url('fonts/proximanova-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'proxima_nova_regular';
+    src: url('fonts/proximanova-regular-webfont.woff2') format('woff2'), url('fonts/proximanova-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'proxima_nova_semibold';
+    src: url('fonts/proximanova-semibold-webfont.woff2') format('woff2'), url('fonts/proximanova-semibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#header {
+    background-color: #fff;
+    height: 60px;
+    border: 1px solid #EFEDEE;
+}
+
+#logo {
+    font-family: 'proxima_nova_light';
+    font-size: 28px;
+    color: var(--sapphire-blue);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    vertical-align: middle;
+    line-height: 60px;
+    margin: 0;
+}
+

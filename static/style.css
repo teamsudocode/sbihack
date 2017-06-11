@@ -37,11 +37,38 @@ body {
     font-family: 'proxima_nova_light';
     font-size: 28px;
     color: var(--sapphire-blue);
-    text-align: center;
     text-transform: uppercase;
     letter-spacing: 1.2px;
     vertical-align: middle;
     line-height: 60px;
-    margin: 0;
+    font-weight: normal;
+    margin-left: 10px;
+    cursor: pointer;
 }
 
+#login{
+    margin: 0;
+    border: 1px solid var(--sapphire-blue);
+    background-color: white;
+    padding: 0.5em 1em;
+    font-size: 16px;
+    font-family: 'proxima_nova_light';
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--sapphire-blue);
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+    transition-property: all;
+}
+
+#login:hover{
+    color: white;
+    background-color: var(--sapphire-blue);
+}
+
+button:focus{
+    outline: none;
+}

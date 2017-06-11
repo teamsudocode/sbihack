@@ -1,4 +1,4 @@
-:root{
+:root {
     --sapphire-blue: #00A8E2;
 }
 
@@ -46,7 +46,7 @@ body {
     cursor: pointer;
 }
 
-#login{
+#login {
     margin: 0;
     border: 1px solid var(--sapphire-blue);
     background-color: white;
@@ -64,11 +64,11 @@ body {
     transition-property: all;
 }
 
-#login:hover{
+#login:hover {
     color: white;
     background-color: var(--sapphire-blue);
 }
 
-button:focus{
+button:focus {
     outline: none;
 }

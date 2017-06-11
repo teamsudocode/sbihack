@@ -1,0 +1,112 @@
+[
+    {
+        "productName": "SBI Flexipay Home Loan",
+        "interestRate": null,
+        "principalRange": [2000000],
+        "tenure": null,
+        "flexiPay": true,
+        "prePaymentPenalty": null,
+        "ageConstraint": [21, 45],
+        "customerType": ["salaried", "young/adult"],
+        "comments": "Salaried applicants with min. 2 year experience and aged between 21-45 years"
+    },
+    {
+        "productName": "SBI Maxgain",
+        "interestRate": null,
+        "principalRange": [2000000],
+        "tenure": null,
+        "flexiPay": true,
+        "prePaymentPenalty": null,
+        "ageConstraint": null,
+        "customerType": null,
+        "comments": "Home loan as an overdraft. You get a current account with cheque book/net banking facility."
+    },
+    {
+        "productName": "NRI Home loans",
+        "interestRate": null,
+        "principalRange": [300000],
+        "tenure": null,
+        "flexiPay": null,
+        "prePaymentPenalty": null,
+        "ageConstraint": null,
+        "customerType": ["nri"],
+        "comments": "NRI living abroad for at least two years with regular source of income."
+    },
+    {
+        "productName": "SBI Realty",
+        "interestRate": null,
+        "principalRange": [0, 100000000],
+        "tenure": null,
+        "flexiPay": null,
+        "prePaymentPenalty": null,
+        "ageConstraint": null,
+        "customerType": null,
+        "comments": "For purchase of plot for construction. The construction of house should commence within 5 years from date of availment."
+    },
+    {
+        "productName": "SBI Pal Pre-Approved Home Loan",
+        "interestRate": null,
+        "principalRange": [1000000],
+        "tenure": null,
+        "flexiPay": null,
+        "prePaymentPenalty": null,
+        "ageConstraint": null,
+        "customerType": ["property purchasers"]
+        "comments": "Enables you to deal with seller before finalisation of property. Valid for 4 months after which the property documents should be submitted."
+    },
+    {
+        "productName": "SBI Tribal Plus",
+        "interestRate": null,
+        "principalRange": [0, 1000000],
+        "tenure": [0, 15],
+        "flexiPay": null,
+        "prePaymentPenalty": null,
+        "ageConstraint": null,
+        "customerType": ["tribal", "living in hilly/tribal areas"],
+        "comments": "For hilly/tribal areas(where mortgage is not possible). For new flat/house. For purchase of house (not more than 10 years old). For repair/renovation."
+    },
+    {
+        "productName": "SBI Privilege Home Loan",
+        "interestRate": null,
+        "principalRange": null,
+        "tenure": [0, 30],
+        "flexiPay": null,
+        "prePaymentPenalty": null,
+        "ageConstraint": [0, 75],
+        "customerType": ["central/state govt employees", "psu employees", "with pensionable service"],
+        "comments": "Other bank customers can switch their outstanding balance to SBI. Waiver in processing fees."
+    },
+    {
+        "productName": "SBI Shaurya Home Loan",
+        "interestRate": null,
+        "principalRange": null,
+        "tenure": [0, 30],
+        "flexiPay": null,
+        "prePaymentPenalty": null,
+        "ageConstraint": [0, 75],
+        "customerType": ["defense personnel"],
+        "comments": "Other bank customers can switch their outstanding balance to SBI. Waiver in processing fees."
+    },
+    {
+        "productName": "SBI Bridge Home Loan",
+        "interestRate": null,
+        "principalRange": null,
+        "tenure": [0, 2],
+        "flexiPay": true,
+        "prePaymentPenalty": null,
+        "ageConstraint": null,
+        "customerType": ["property owner/co-owner", "property sellers"],
+        "comments": "Helps you fill the needs of funds if you fell short."
+    },
+    {
+        "productName": "SBI Bridge Home Loan",
+        "interestRate": [5, 10],
+        "principalRange": [50000, 500000000],
+        "tenure": [0, 30],
+        "flexiPay": null,
+        "prePaymentPenalty": null,
+        "ageConstraint": [18],
+        "customerType": ["non-salaried", "professionals", "self-employed", "business-firm"],
+        "comments": "Helps you fill the needs of funds if you fell short."
+    }
+]

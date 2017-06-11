@@ -17,7 +17,7 @@
         "tenure": null,
         "flexiPay": true,
         "prePaymentPenalty": null,
-        "ageConstraint": null,
+        "ageConstraint": [18, 70],
         "customerType": null,
         "comments": "Home loan as an overdraft. You get a current account with cheque book/net banking facility."
     },
@@ -28,7 +28,7 @@
         "tenure": null,
         "flexiPay": null,
         "prePaymentPenalty": null,
-        "ageConstraint": null,
+        "ageConstraint": [18, 70],
         "customerType": ["nri"],
         "comments": "NRI living abroad for at least two years with regular source of income."
     },
@@ -39,7 +39,7 @@
         "tenure": null,
         "flexiPay": null,
         "prePaymentPenalty": null,
-        "ageConstraint": null,
+        "ageConstraint": [18, 70],
         "customerType": null,
         "comments": "For purchase of plot for construction. The construction of house should commence within 5 years from date of availment."
     },
@@ -50,7 +50,7 @@
         "tenure": null,
         "flexiPay": null,
         "prePaymentPenalty": null,
-        "ageConstraint": null,
+        "ageConstraint": [18, 70],
         "customerType": ["property purchasers"]
         "comments": "Enables you to deal with seller before finalisation of property. Valid for 4 months after which the property documents should be submitted."
     },
@@ -61,7 +61,7 @@
         "tenure": [0, 15],
         "flexiPay": null,
         "prePaymentPenalty": null,
-        "ageConstraint": null,
+        "ageConstraint": [18, 70],
         "customerType": ["tribal", "living in hilly/tribal areas"],
         "comments": "For hilly/tribal areas(where mortgage is not possible). For new flat/house. For purchase of house (not more than 10 years old). For repair/renovation."
     },
@@ -72,7 +72,7 @@
         "tenure": [0, 30],
         "flexiPay": null,
         "prePaymentPenalty": null,
-        "ageConstraint": [0, 75],
+        "ageConstraint": [18, 75],
         "customerType": ["central/state govt employees", "psu employees", "with pensionable service"],
         "comments": "Other bank customers can switch their outstanding balance to SBI. Waiver in processing fees."
     },
@@ -83,7 +83,7 @@
         "tenure": [0, 30],
         "flexiPay": null,
         "prePaymentPenalty": null,
-        "ageConstraint": [0, 75],
+        "ageConstraint": [18, 75],
         "customerType": ["defense personnel"],
         "comments": "Other bank customers can switch their outstanding balance to SBI. Waiver in processing fees."
     },
@@ -94,7 +94,7 @@
         "tenure": [0, 2],
         "flexiPay": true,
         "prePaymentPenalty": null,
-        "ageConstraint": null,
+        "ageConstraint": [18, 70],
         "customerType": ["property owner/co-owner", "property sellers"],
         "comments": "Helps you fill the needs of funds if you fell short."
     },
@@ -105,7 +105,7 @@
         "tenure": [0, 30],
         "flexiPay": null,
         "prePaymentPenalty": null,
-        "ageConstraint": [18],
+        "ageConstraint": [18, 70],
         "customerType": ["non-salaried", "professionals", "self-employed", "business-firm"],
         "comments": "Helps you fill the needs of funds if you fell short."
     },
@@ -116,7 +116,7 @@
         "tenure": null,
         "flexiPay": null,
         "prePaymentPenalty": null,
-        "ageConstraint": [18],
+        "ageConstraint": [18, 70],
         "customerType": ["already loan owners"],
         "comments": "For all home loans with satisfactory repayment track for one year. Valid mortgage in favor of bank. Much more conditions... find on bank's website."
     },
@@ -127,7 +127,7 @@
         "tenure": null,
         "flexiPay": null,
         "prePaymentPenalty": null,
-        "ageConstraint": [18],
+        "ageConstraint": [18, 70],
         "customerType": ["house owning senior citizens"],
         "comments": "For renovation/repair/medical/personal uses."
     },
@@ -138,8 +138,8 @@
         "tenure": null,
         "flexiPay": null,
         "prePaymentPenalty": true,
-        "ageConstraint": [18],
+        "ageConstraint": [18, 70],
         "customerType": ["affordable segment", "middle class"],
         "comments": "Targets the affordable segment."
-    },
+    }
 ]

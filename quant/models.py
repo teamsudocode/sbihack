@@ -3,6 +3,7 @@
 """Database schema"""
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import sqlalchemy
 from datetime import datetime
 
 
@@ -58,6 +59,10 @@ class Review(db.Model):
     rating = db.Column(db.String(2), nullable=False)
     comment = db.Column(db.String(500))
 
+    __table_args__ = (
+        sqlalchemy.UniqueConstraint("userid", "productid", name="unique_review"),
+    )
+
     def __init__(self, userid, productid, rating, comment):
         rating_float = float(rating)
         if not(rating_float >= 0 and rating_float <= 5):
@@ -95,10 +100,25 @@ if __name__ == "__main__":
     db.session.add_all(users)
     db.session.add_all(products)
     reviews = [
-        Review(userid=1, productid=2, rating="1.2", comment="haha lol")
+        Review(userid=1, productid=2, rating="1.2", comment="haha lol"),
+        Review(userid=1, productid=1, rating="2.3", comment="nice")
     ]
     db.session.add_all(reviews)
     db.session.commit()
+    # re = Review(userid=1, productid=2, rating="0.6", comment="haha not good")
+    # if above review exists
+    # otherwise you'd get sqlalchemy.exc.IntegrityError, so try---catch
+    target = Review.query.filter_by(productid=2, userid=1).first()
+    if target:
+        print("review already exists")
+        target.rating = "0.6"
+        target.comment = "not good"
+        # that's all to be done to update information
+        # you can also perform db.session.commit() for safety
+    else:
+        db.session.add(Review(userid=1, productid=2, rating="0.6", comment="not good"))
     print(User.query.all())
     print(Product.query.all())
     print(Review.query.all())
+    print(Review.query.filter_by(productid=1).first())
+    print(Review.query.filter_by(productid=2).first())

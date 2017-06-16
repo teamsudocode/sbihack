@@ -12,8 +12,10 @@
 
 /* Sidebar navigation */
 .nav-sidebar {
-  margin-right: -21px; /* 20px padding + 1px border */
+  /*margin-right: -10px;  20px padding + 1px border */
   margin-bottom: 20px;
+  min-width: 10em;
+  max-width: 15em;
 }
 .nav-sidebar > li > a {
   padding-right: 20px;
@@ -29,4 +31,15 @@
 .nav-sidebar > .active > a:focus {
   color: #fff;
   background-color: #428bca;
+}
+
+#quessitionaire form {
+  box-sizing: border-box;
+  padding-left: 10px;
+}
+
+.card {
+  margin-bottom: 5px;
+  border: 1px solid grey; 
+  box-sizing: border-box;
 }

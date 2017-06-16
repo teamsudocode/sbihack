@@ -24,7 +24,7 @@
       </button>
       
     </div>
-    <a class="navbar-brand" href="#">Brand</a>
+    <a class="navbar-brand" href="#">Quant</a>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
      
@@ -46,13 +46,135 @@
 
 <main class="container-fluid">
     <div class="row">
-        <div class="col-md-1 col-sm-2 nav-sidebar">
-            <ul class="nav nav-sidebar">
-                <li><a href="#">Dashboards</a></li>
-                <li><a href="#">Loans</a></li>
-                <li><a href="#">Deposits</a></li>
-                <li><a href="#">Explore</a></li>
+        <nav class="col-md-2 col-sm-2 col-lg-2 col-xs-2 list-group">
+            <ul>
+                <li class="list-group-item text-center">
+                    <img src="" alt="image"><br>
+                    <a href="#"><u>Dashboards</u></a>
+                </li>
+                <li class="list-group-item text-center">
+                    <img src="" alt="image"><br>
+                    <a href="#"><u>Home Loans</u></a>    
+                </li>
+                <li class="list-group-item text-center">
+                    <img src="" alt="image"><br>
+                    <a href="#"><u>Deposits</u></a>
+                </li>
+                <li class="list-group-item text-center">
+                    <img src="" alt="image"><br>
+                    <a href="#"><u>Explore</u></a>    
+                </li>
             </ul>
+        </nav>
+
+        <div class="col-md-7 col-sm-12 col-lg-7 col-xs-12" id="questionnaire">
+            <form action="#" class="form-horizontal">
+                <h3>Find the best schemes</h3>
+                <div class="form-group" style="margin-left: 15px">
+                    <label class="radio-inline">
+                        <input type="radio" name="productType" value="loan"> Loan
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="productType" value="deposit"> Deposit
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="productType" value="insurance"> Insurance
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="productType" value="postRetirement"> Post retirement
+                    </label>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-lg-3 col-sm-12 col-xs-12 control-label">Select the type of loan</label>
+                        <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12">
+                            <select class="form-control">
+                                <option value="home">Home Loan</option>
+                                <option value="edu">Education Loan</option>
+                                <option value="personal">Personal Loan</option>
+                                <option value="vehicle">Vehicle loan</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-lg-3 col-sm-12 col-xs-12 control-label">
+                            Minimum EMI amount <small class="text-muted text-italic">(Optional)</small>
+                        </label>
+                        <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12 input-group">
+                            <span class="input-group-addon">&#x20b9;</span>
+                            <input type="number" min=0 class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-lg-3 col-sm-12 col-xs-12 control-label">
+                            Your salary
+                        </label>
+                        <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12 input-group">
+                            <span class="input-group-addon">&#x20b9;</span>
+                            <input type="number" min=0 class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-lg-3 col-sm-12 col-xs-12 control-label">
+                            Tenure
+                        </label>
+                        <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12 input-group">
+                            <input type="number" min=0 class="form-control">
+                            <span class="input-group-addon">years</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary">Search for schemes</button>
+            </form>
+        </div>
+
+        <div class="col-md-3 col-sm-12 col-lg-3 col-xs-12 row list-group" id="productList">
+            <h3>Trending products</h3>
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 list-group-item">
+                <a href="#">&#x20b9; 20,343 at &#x20b9; 340 per month</a>
+                <br>
+                <small style="margin-right: 1em;">Home loan</small>
+                <small style="margin-right: 1em;">10%</small>
+                <small style="margin-right: 1em;">5 year</small>
+                <br>
+                <span class="glyphicon glyphicon-star-empty text-primary"></span>
+                <span class="glyphicon glyphicon-star-empty text-primary"></span>
+                <span class="glyphicon glyphicon-star-empty text-primary"></span>
+                <span class="glyphicon glyphicon-star-empty"></span>
+                <span class="glyphicon glyphicon-star-empty"></span>
+                &nbsp; &nbsp; &nbsp;
+                <span class="glyphicon glyphicon-user"></span> 50 happy users
+            </div>
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 list-group-item">
+                <a href="#">&#x20b9; 20,343 at &#x20b9; 340 per month</a>
+                <br>
+                <small style="margin-right: 1em;">Home loan</small>
+                <small style="margin-right: 1em;">10%</small>
+                <small style="margin-right: 1em;">5 year</small>
+                <br>
+                <span class="glyphicon glyphicon-star-empty text-primary"></span>
+                <span class="glyphicon glyphicon-star-empty text-primary"></span>
+                <span class="glyphicon glyphicon-star-empty text-primary"></span>
+                <span class="glyphicon glyphicon-star-empty"></span>
+                <span class="glyphicon glyphicon-star-empty"></span>
+                &nbsp; &nbsp; &nbsp;
+                <span class="glyphicon glyphicon-user"></span> 50 happy users
+            </div>
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 list-group-item">
+                <a href="#">&#x20b9; 20,343 at &#x20b9; 340 per month</a>
+                <br>
+                <small style="margin-right: 1em;">Home loan</small>
+                <small style="margin-right: 1em;">10%</small>
+                <small style="margin-right: 1em;">5 year</small>
+                <br>
+                <span class="glyphicon glyphicon-star-empty text-primary"></span>
+                <span class="glyphicon glyphicon-star-empty text-primary"></span>
+                <span class="glyphicon glyphicon-star-empty text-primary"></span>
+                <span class="glyphicon glyphicon-star-empty"></span>
+                <span class="glyphicon glyphicon-star-empty"></span>
+                &nbsp; &nbsp; &nbsp;
+                <span class="glyphicon glyphicon-user"></span> 50 happy users
+            </div>
         </div>
     </div>
 </main>

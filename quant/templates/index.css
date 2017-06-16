@@ -33,9 +33,20 @@
   background-color: #428bca;
 }
 
-#quessitionaire form {
+#quessitionaire {
   box-sizing: border-box;
   padding-left: 10px;
+  max-width: 3em;
+}
+
+.container-flex {
+  display: flex;
+  max-width: 100%;
+  flex-flow: row wrap;
+}
+
+.container-flex > div {
+
 }
 
 .card {

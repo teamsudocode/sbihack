@@ -1,53 +1,9 @@
-<html>
+{% extends 'base.html' %}
 
-<head>
-    <title>Quant</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="index.css">
-</head>
-
-<body>
-
-<nav class="navbar navbar-default" role="navigation" id="navbar">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      
-    </div>
-    <a class="navbar-brand" href="#">Quant</a>
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="navbar-collapse-1">
-     
-      <ul class="nav navbar-nav navbar-left">
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-            <form action="#" class="navbar-form navbar-right">
-                <input type="search" class="form-control" placeholder="Search">
-                <button class="btn btn-default">
-                    <span class="glyphicon glyphicon-search"></span>
-                </button>
-            </form>
-        </li>
-        <li><a href="#" class="">Log out</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-</nav>
-
-<main class="container-fluid">
+{% block content %}
     <div class="row">
         <nav class="col-md-2 col-sm-2 col-lg-2 col-xs-4 list-group">
-            <ul>
+            <ul style="padding: 20px;">
                 <li class="list-group-item text-center">
                     <img src="" alt="image"><br>
                     <a href="#"><u>Dashboards</u></a>
@@ -176,8 +132,5 @@
             </div>
         </div>
     </div>
-</main>
 
-</body>
-
-</html>
+{% endblock %}

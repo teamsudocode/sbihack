@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="row">
+        <nav class="col-md-2 col-sm-2 col-lg-2 col-xs-4 list-group">
+            <ul>
+                <li class="list-group-item text-center">
+                    <img src="" alt="image"><br>
+                    <a href="#"><u>Dashboards</u></a>
+                </li>
+                <li class="list-group-item text-center">
+                    <img src="" alt="image"><br>
+                    <a href="#"><u>Home Loans</u></a>    
+                </li>
+                <li class="list-group-item text-center">
+                    <img src="" alt="image"><br>
+                    <a href="#"><u>Deposits</u></a>
+                </li>
+                <li class="list-group-item text-center">
+                    <img src="" alt="image"><br>
+                    <a href="#"><u>Explore</u></a>    
+                </li>
+            </ul>
+        </nav>
+
+        <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6 id="questionnaire">
+            <form action="#" style="max-width: 30em;">
+                <h3>Find the best schemes</h3>
+                <div class="form-group">
+                    <label class="radio-inline">
+                        <input type="radio" name="productType" value="loan"> Loan
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="productType" value="deposit"> Deposit
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="productType" value="insurance"> Insurance
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="productType" value="postRetirement"> Post retirement
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Select the type of label</label>
+                    <select name="loanType" id="loanType" class="form-control">
+                        <option value="home">Home Loan</option>
+                        <option value="edu">Education Loan</option>
+                        <option value="personal">Personal Loan</option>
+                        <option value="vehicle">Vehicle Loan</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">
+                        Minimum EMI amount <small class="text-muted text-italic">(Optional)</small>
+                    </label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><b>&#x20b9;</b></span>
+                        <input type="number" min=0 class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">
+                        Your salary
+                    </label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><b>&#x20b9;</b></span>
+                        <input type="number" min=0 class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">
+                        Tenure
+                    </label>
+                    <div class="input-group">
+                        <input type="number" min=0 class="form-control">
+                        <span class="input-group-addon">years</span>
+                    </div>
+                </div>
+                <button class="btn btn-primary">Search for schemes</button>
+            </form>
+        </div>
+
+        <div class="col-md-3 col-lg-3 col-sm-10 col-xs-10
+                    col-md-offset-1 col-lg-offset-1 col-sm-offset-1 col-xs-offset-1" id="productList">
+            <h3>Trending products</h3>
+            <div class="container-flex">
+                <div class="list-group-item">
+                    <a href="#">&#x20b9; 20,343 at &#x20b9; 340 per month</a>
+                    <br>
+                    <small style="margin-right: 1em;">Home loan</small>
+                    <small style="margin-right: 1em;">10%</small>
+                    <small style="margin-right: 1em;">5 year</small>
+                    <br>
+                    <span class="glyphicon glyphicon-star-empty text-primary"></span>
+                    <span class="glyphicon glyphicon-star-empty text-primary"></span>
+                    <span class="glyphicon glyphicon-star-empty text-primary"></span>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    &nbsp; &nbsp; &nbsp;
+                    <span class="glyphicon glyphicon-user"></span> 50 happy users
+                </div>
+                <div class="list-group-item">
+                    <a href="#">&#x20b9; 20,343 at &#x20b9; 340 per month</a>
+                    <br>
+                    <small style="margin-right: 1em;">Home loan</small>
+                    <small style="margin-right: 1em;">10%</small>
+                    <small style="margin-right: 1em;">5 year</small>
+                    <br>
+                    <span class="glyphicon glyphicon-star-empty text-primary"></span>
+                    <span class="glyphicon glyphicon-star-empty text-primary"></span>
+                    <span class="glyphicon glyphicon-star-empty text-primary"></span>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    &nbsp; &nbsp; &nbsp;
+                    <span class="glyphicon glyphicon-user"></span> 50 happy users
+                </div>
+                <div class="list-group-item">
+                    <a href="#">&#x20b9; 20,343 at &#x20b9; 340 per month</a>
+                    <br>
+                    <small style="margin-right: 1em;">Home loan</small>
+                    <small style="margin-right: 1em;">10%</small>
+                    <small style="margin-right: 1em;">5 year</small>
+                    <br>
+                    <span class="glyphicon glyphicon-star-empty text-primary"></span>
+                    <span class="glyphicon glyphicon-star-empty text-primary"></span>
+                    <span class="glyphicon glyphicon-star-empty text-primary"></span>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    &nbsp; &nbsp; &nbsp;
+                    <span class="glyphicon glyphicon-user"></span> 50 happy users
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

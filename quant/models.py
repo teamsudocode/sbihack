@@ -6,6 +6,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_sqlalchemy import sqlalchemy
 from datetime import datetime
 
+ForeignKey = sqlalchemy.ForeignKey
+relationship = sqlalchemy.orm.relationship
 
 db = SQLAlchemy()
 
@@ -13,6 +15,23 @@ def create_app():
     app = Flask(__name__)
     db.init_app(app)
     return app
+
+
+class Log(db.Model):
+    """tracking all users"""
+    __tablename__ = "log"
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow())
+    userid = db.Column(db.Integer, ForeignKey('user.id'))
+    productid = db.Column(db.Integer, ForeignKey('product.id'))
+
+    user = relationship("User")
+    product = relationship("Product")
+
+    def __repr__(self):
+        return "<Log id='%s' timestamp='%s', userid='%s', productid='%s', user='%s', product='%s'>" % (
+            self.id, self.timestamp, self.userid, self.productid, self.user, self.product)
 
 
 class User(db.Model):
@@ -59,6 +78,9 @@ class Review(db.Model):
     rating = db.Column(db.String(2), nullable=False)
     comment = db.Column(db.String(500))
 
+    user = relationship("User")
+    product = relationship("Product")
+
     __table_args__ = (
         sqlalchemy.UniqueConstraint("userid", "productid", name="unique_review"),
     )
@@ -73,8 +95,8 @@ class Review(db.Model):
         self.comment = comment
 
     def __repr__(self):
-        return "<Review id='%s', userid='%s', productid='%s', rating='%s', created_at='%s'>" % (
-            self.id, self.userid, self.productid, self.rating, self.comment)
+        return "<Review id='%s', userid='%s', productid='%s', rating='%s', created_at='%s', user='%s', product='%s'>" % (
+            self.id, self.userid, self.productid, self.rating, self.comment, self.user, self.product)
 
 
 if __name__ == "__main__":
@@ -122,3 +144,14 @@ if __name__ == "__main__":
     print(Review.query.all())
     print(Review.query.filter_by(productid=1).first())
     print(Review.query.filter_by(productid=2).first())
+
+    logs = [
+        Log(userid=1, productid=2),
+        Log(userid=1, productid=1),
+        Log(userid=2, productid=1),
+        Log(userid=2, productid=2)
+    ]
+    db.session.add_all(logs)
+    db.session.commit()
+    for log in (Log.query.all()):
+        print(log)

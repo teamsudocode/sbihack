@@ -37,6 +37,10 @@ def product_info(id):
 def create_issue_if_required(review_object):
     """implement the logic to check problems here
     """
+    avg_rating = Review.query(func.avg(Review.rating)).filter(productid = review_object.productid)
+    if review_object.rating < avg_rating :
+        new_issue = Issue(created_at = datetime.now(), review_id = review_object.id, review = Review.query.filter_by(Review.query.filter_by(id = review_object.id)))
+        db.session.add(new_issue)
     print("review handler returning")
     pass
 

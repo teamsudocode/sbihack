@@ -22,7 +22,7 @@ class Log(db.Model):
     __tablename__ = "log"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    timestamp = db.Column(db.DateTime, default=datetime.utcnow())
+    timestamp = db.Column(db.DateTime, default=datetime.now())
     userid = db.Column(db.Integer, ForeignKey('user.id'))
     productid = db.Column(db.Integer, ForeignKey('product.id'))
 
@@ -41,7 +41,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(50), nullable=False)
     cif = db.Column(db.String(20), unique=True)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow())
+    created_at = db.Column(db.DateTime, default=datetime.now())
 
     def __init__(self, name, cif):
         self.name = name
@@ -72,7 +72,7 @@ class Product(db.Model):
 class Review(db.Model):
     """collection of all users"""
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow())
+    created_at = db.Column(db.DateTime, default=datetime.now())
     userid = db.Column(db.Integer, db.ForeignKey('user.id'))
     productid = db.Column(db.Integer, db.ForeignKey('product.id'))
     rating = db.Column(db.String(2), nullable=False)
@@ -164,7 +164,9 @@ if __name__ == "__main__":
     db.create_all(app=app)
     users = [
         User(name="himanshu", cif="123"),
-        User(name="sudhanshu", cif="012")
+        User(name="sudhanshu", cif="012"),
+        User(name="sharma", cif="232"),
+        User(name="priyanshu", cif="423")
     ]
     products = [
         Product(name="produ1", category="home"),
@@ -174,7 +176,10 @@ if __name__ == "__main__":
     db.session.add_all(products)
     reviews = [
         Review(userid=1, productid=2, rating="1.2", comment="haha lol"),
-        Review(userid=1, productid=1, rating="2.3", comment="nice")
+        Review(userid=1, productid=1, rating="2.3", comment="nice"),
+        Review(userid=2, productid=1, rating="3.3", comment="nice"),
+        Review(userid=3, productid=1, rating="3.3", comment="nice"),
+        Review(userid=4, productid=1, rating="4.3", comment="nice")
     ]
     db.session.add_all(reviews)
     db.session.commit()
@@ -259,5 +264,26 @@ if __name__ == "__main__":
         "TotalBalance": "600000.00"
     })
     print(acc)
+    acc = Account(**{
+            "AccountCategory": "L",
+            "AccountNumber": "00000030001514012",
+            "AccountOpeningDate": "00000000",
+            "AccountStatus": "OPEN",
+            "AccountType": "BR-STUDENTLN ISB STUDENTS",
+            "AccountTypeCode": "6251",
+            "ApprovedSanctionedAmount": "",
+            "AvailableBalance": "600000.00",
+            "Currency": "INR",
+            "DPAvailable": "0.05",
+            "HomeBranch": "00438",
+            "IntCategory": "1101",
+            "InterestRate": "4.00",
+            "Link": "OWN",
+            "MaturityAmount": "0.01",
+            "MaturityDate": "",
+            "PrincipleAmount": "600000.00",
+            "TermPeriod": "",
+            "TotalBalance": "600000.00"
+        })
     print(acc.balance, type(acc.balance))
     print(acc.created_at)

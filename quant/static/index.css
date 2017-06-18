@@ -203,11 +203,6 @@ select {
     padding: 2px;
 }
 
-#row2 > select {
-    padding: 2px 30px 2px 2px;
-    background: transparent;
-}
-
 #row3>button {
     border: none;
     padding: 14px;
@@ -282,7 +277,7 @@ input[placeholder] {
     font-family: ProximaNova-Semibold;
     font-size: 20px;
     color: #505050;
-    padding:16px 0px 0px 20px;
+    padding: 16px 0px 0px 20px;
 }
 
 .schemecard {
@@ -331,7 +326,7 @@ input[placeholder] {
     color: #ACACAC;
 }
 
-.material-icons{
+.material-icons {
     vertical-align: middle;
 }
 

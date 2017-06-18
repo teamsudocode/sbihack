@@ -26,7 +26,7 @@ def product_info(id):
     reviews = Review.query.filter_by(productid=id).all()
     print(product)
     print(reviews)
-    return "OK"
+    return render_template('product.html', product=product, reviews=reviews)
 
 
 @app.route("/admin")

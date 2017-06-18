@@ -21,7 +21,6 @@
     border-radius: 2px;
 }
 
-
 #box2[placeholder],
 #box3[placeholder],
 #box4[placeholder] {
@@ -31,13 +30,131 @@
     color: #505050;
 }
 
-#row2>select{
+#row2>select {
     margin: 8px 16px;
 }
 
-#loans{
-    
+#loans {
+    padding: 24px 32px;
+}
+
+#loans>h2 {
+    font-weight: normal;
+    font-family: ProximaNova-Semibold;
+    font-size: 20px;
+    color: #505050;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 8px;
+    margin-left: 16px;
+}
+
+.product-card {
     background: #FFFFFF;
     border: 1px solid #EFEDEE;
-    padding: 24px 32px;
+    width: 270px;
+    padding-top: 12px;
+    margin-left: 20px;
+    margin-bottom: 40px;
+}
+
+.product-card>label {
+    font-family: ProximaNova-Regular;
+    font-size: 12px;
+    color: #666666;
+    padding: 2px 10px;
+    background: #E7E7E7;
+    margin-left: 12px;
+}
+
+.product-card>h1 {
+    font-family: ProximaNova-Regular;
+    font-size: 20px;
+    font-weight: normal;
+    color: #505050;
+    line-height: 20px;
+    letter-spacing: 0;
+    margin: 0;
+    margin-top: 12px;
+    margin-left: 12px;
+    margin-bottom: 8px;
+}
+
+.product-card>h2 {
+    font-family: ProximaNova-Regular;
+    font-size: 16px;
+    color: #AAAAAA;
+    font-weight: normal;
+    line-height: 16px;
+    letter-spacing: 0;
+    margin: 0;
+    margin-left: 12px;
+    margin-bottom: 8px;
+}
+
+.product-card>button {
+    border: none;
+    text-transform: uppercase;
+    padding: 8px 74px;
+    font-family: ProximaNova-Regular;
+    font-size: 16px;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+    width: 100%;
+    background: #00A8E2;
+}
+
+.product-card>button:focus {
+    outline: none;
+}
+
+#ratings>#stars {
+    margin: 0;
+    margin-left: 12px;
+    margin-bottom: 8px;
+}
+
+#ratings>#stars>i {
+    font-size: 18px;
+}
+
+#ratings>#stars>span {
+    color: #00A8E2;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+#customers {
+    font-family: ProximaNova-Regular;
+    font-size: 14px;
+    color: #666666;
+    letter-spacing: 0;
+    vertical-align: middle;
+    margin-bottom: 8px;
+    margin-left: 12px;
+}
+
+#customers>i {
+    color: #666;
+    margin-right: 8px;
+}
+
+.product-card>button:hover {
+    background-color: #0095C9;
+}
+
+#product-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#loans {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+#schemesearch {
+    padding-right: 0;
+    padding-left: 0;
 }

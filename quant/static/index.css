@@ -87,6 +87,19 @@ p {
     line-height: 16px;
 }
 
+#welcome {
+    margin: 14px 14px 14px 0px;
+    padding: 8px 16.5px;
+    font-family: ProximaNova-Regular;
+    font-size: 16px;
+    color: #505050;
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+    border-radius: 2px;
+    line-height: 16px;
+}
+
 .quant-btn:hover {
     color: #0095C9;
     border: 1px solid #0095C9;
@@ -267,7 +280,6 @@ p {
 #row2>select:focus {
     outline: none;
     border: 1px solid var(--sapphire-blue);
-    
 }
 
 #row2>input {
@@ -385,4 +397,47 @@ p {
 
 #more:hover {
     color: #0095C9;
+}
+
+
+/*customer specific css*/
+
+#userstats {
+    background: #FFFFFF;
+    border: 1px solid #EFEDEE;
+    padding: 24px 32px;
+    margin-bottom: 24px;
+}
+
+#userstats>h2 {
+    font-weight: normal;
+    font-family: ProximaNova-Semibold;
+    font-size: 20px;
+    color: #505050;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 8px;
+}
+
+#expensediv {
+    margin-top: 32px;
+    height: 200px;
+}
+
+#credit {
+    font-weight: normal;
+    font-family: ProximaNova-Semibold;
+    font-size: 16px;
+    color: #00C853;
+    padding-top: 16px;
+    float: left;
+}
+
+#debit {
+    font-weight: normal;
+    font-family: ProximaNova-Semibold;
+    font-size: 16px;
+    color: #F44336;
+    padding-top: 16px;
+    float: right;
 }

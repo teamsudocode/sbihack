@@ -12,7 +12,9 @@
     <!--HEADER-->
     <div class="container">
         <div class="row">
-            <div class="col-xs-12" id="navbar"><a id="logo-link" href="dashboard.html">Quant</a><button id="signin" class="quant-btn">Sign In</button></div>
+            <div class="col-xs-12" id="navbar"><a id="logo-link" href="dashboard.html">Quant</a>
+                <span id="welcome">Hello, Abhishek! </span>
+            </div>
         </div>
         <!--SIDENAV-->
         <div class="row">
@@ -33,12 +35,26 @@
                     <div class="option"><img src="icons/support-inactive.png">
                         <p>Support</p>
                     </div>
+                    <div class="option">
+                        <p>Log out</p>
+                    </div>
                 </div>
             </div>
             <!--SEARCH-->
+            <div class="col-sm-7" id="userstats">
+                <h2>Your Month in a review</h2>
+                <div id="expensediv">
+                    <canvas id="expenses"></canvas>
+                </div>
+                <div>
+                    <span id="credit">Amount Credited: ₹3487</span>
+                    <span id="debit">Amount Debited: ₹4567</span>
+                </div>
+            </div>
+
             <div class="col-sm-7" id="searchbox">
                 <form id="schemesearch">
-                    <div id="row1" >
+                    <div id="row1">
                         <p>Find the best schemes</p>
                         <input type="radio" value="loans" name="scheme" checked> <label>Loans</label>
                         <input type="radio" value="deposits" name="scheme"> <label>Deposits</label>
@@ -108,11 +124,11 @@
                         </p>
                         <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><i class="material-icons ngiven">star_border</i><span>456 customers</span></div>
                     </div>
-                    
+
                     <div class="schemecard">
                         <a href="#" id="more">View more</a>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -122,5 +138,8 @@
 </html>
 <link rel="stylesheet" href="bootstrap.min.css">
 <link rel="stylesheet" href="index.css">
-<script src="app.js">
+<script src="Chart.min.js"></script>
+<script src="app.js"></script>
+
+
 </script>

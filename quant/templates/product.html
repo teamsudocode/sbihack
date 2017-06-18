@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <h4>{{ product.name }}</h4>
+</div>
+<div class="row">
+    <table class="table">
+        <th>
+            <td>Username</td>
+            <td>Time</td>
+            <td>Rating</td>
+            <td>Comment</td>
+        </th>
+        {% for review in reviews %}
+        <tr>
+            <td>{{ review.id }}</td>
+            <td>{{ review.user.name }}</td>
+            <td>{{ review.created_at.strftime("%d %B %Y") }}</td>
+            <td>{{ review.rating }}</td>
+            <td>{{ review.comment }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

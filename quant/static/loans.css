@@ -160,4 +160,6 @@
 #schemesearch {
     padding-right: 0;
     padding-left: 0;
+    width: 75%;
+    float: right;
 }

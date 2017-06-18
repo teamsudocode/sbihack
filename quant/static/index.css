@@ -172,12 +172,9 @@ p {
 }
 
 #schemesearch {
-    width: 75%;
     background: #FFFFFF;
     border: 1px solid #EFEDEE;
     padding: 24px 32px;
-    float: right;
-    
 }
 
 #row1>p {

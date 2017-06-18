@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from flask import Flask, render_template
 from models import *
 
@@ -6,28 +8,52 @@ app.app_context().push()
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
-print(db)
 db.create_all(app=app)
 
 
 @app.route("/")
 def index():
-	return render_template('index.html')
+    return render_template('index.html')
 
 
 @app.route("/customer")
 def customer():
-	return render_template('customer.html')
+    return render_template('customer.html')
+
+@app.route("/product/<id>")
+def product_info(id):
+    product = Product.query.filter_by(id=id).first()
+    reviews = Review.query.filter_by(productid=id).all()
+    print(product)
+    print(reviews)
+    return "OK"
 
 
 @app.route("/admin")
 def admin():
-	return render_template("admin.html")
+    # report of hits on distinct products
+    logs = Log.query.filter_by()
+    return render_template("admin.html")
 
 
 @app.route("/support")
 def support():
-	return render_template("support.html")
+    return render_template("support.html")
+
+
+@app.route("/webhook/update_accounts/<account_number>")
+def update_accounts(account_number):
+    """ Update the list of accounts for given account number
+    """
+    return "OK"
+
+
+@app.route("/webhook/mini_statement/<account_number>")
+def fetch_mini_statement(account_number):
+    """ Update available transactions in database
+    """
+    return 'OK'
+
 
 
 @app.errorhandler(404)
@@ -36,4 +62,4 @@ def not_found(error):
 
 
 if __name__ == "__main__":
-	app.run(debug=True)
+    app.run(debug=True)

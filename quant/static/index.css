@@ -25,7 +25,7 @@ p {
 }
 
 @font-face {
-    font-family: 'proxima_nova_semibold';
+    font-family: 'ProximaNova-Semibold';
     src: url('fonts/proximanova-semibold-webfont.woff2') format('woff2'), url('fonts/proximanova-semibold-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
@@ -127,22 +127,23 @@ p {
 .option>img {
     height: 72px;
     transition-property: all;
-    transition-duration: 0.1s;
+    transition-duration: 0.2s;
     transition-timing-function: ease-out;
 }
 
-.option:hover{
+.option:hover {
     cursor: pointer;
 }
 
-.option:hover>p{
+.option:hover>p {
     font-family: ProximaNova-Regular;
     color: #505050;
 }
 
-.option:hover>img{
+.option:hover>img {
     transform: scale(1.1);
 }
+
 .active {
     border-left: 5px solid var(--sapphire-blue);
 }
@@ -153,6 +154,187 @@ p {
     font-size: 16px;
 }
 
-#searchbox {}
+#schemesearch {
+    background: #FFFFFF;
+    border: 1px solid #EFEDEE;
+    padding: 24px 32px;
+}
 
-#trending {}
+#row1>p {
+    font-family: ProximaNova-Semibold;
+    font-size: 20px;
+    color: #505050;
+    margin-bottom: 8px;
+}
+
+#row1>label {
+    margin-right: 16px;
+}
+
+#row1 {
+    font-family: ProximaNova-Regular;
+    font-size: 16px;
+    color: #505050;
+}
+
+#row2>label>span {
+    font-family: ProximaNova-Light;
+    font-size: 14px;
+    color: #CBCBCB;
+}
+
+#row2 {
+    margin-top: 24px;
+}
+
+#row2>label {
+    font-family: ProximaNova-Regular;
+    font-size: 16px;
+    color: #505050;
+}
+
+#row3 {
+    margin-top: 24px;
+}
+
+#row2>input,
+select {
+    margin-bottom: 8px;
+}
+
+#row3>button {
+    border: none;
+    padding: 14px;
+    border-radius: 3px;
+    font-family: ProximaNova-Regular;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: #00A8E2;
+    transition-property: all;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+}
+
+#bx1 {
+    margin-left: 7.3em;
+}
+
+#bx2 {
+    margin-left: 8.7em;
+}
+
+#bx3 {
+    margin-left: 3em;
+}
+
+#bx4 {
+    margin-left: 10.7em;
+}
+
+#row3>button:focus {
+    outline: none;
+}
+
+#row3>button:active {
+    transform: scale(0.9);
+}
+
+#row3>button:hover {
+    transform: scale(1.01);
+    box-shadow: 0 2px 4px 0 rgba(0, 149, 200, 0.25);
+}
+
+#row3>a {
+    font-family: ProximaNova-Regular;
+    font-size: 14px;
+    color: #AAAAAA;
+    letter-spacing: 0;
+    text-decoration: underline;
+    margin-left: 16px;
+}
+
+input[placeholder] {
+    font-family: ProximaNova-Regular;
+    font-size: 14px;
+    color: #CBCBCB;
+}
+
+#trendingmaster {
+    padding: 0;
+}
+
+#trending {
+    width: 90%;
+    float: right;
+    background: #FFFFFF;
+    border: 1px solid #EFEDEE;
+}
+
+#trending>p {
+    font-family: ProximaNova-Semibold;
+    font-size: 20px;
+    color: #505050;
+    padding:16px 0px 0px 20px;
+}
+
+.schemecard {
+    background-color: white;
+    border-bottom: 1px solid #DBDBDB;
+    padding: 16px 9px;
+}
+
+.schemecard>#name {
+    font-family: ProximaNova-Regular;
+    font-size: 16px;
+    color: #505050;
+    letter-spacing: 0;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: 16px;
+}
+
+.schemecard>#sub {
+    font-family: ProximaNova-Light;
+    font-size: 12px;
+    color: #ACACAC;
+    margin-left: 16px;
+}
+
+#sub>span {
+    margin-right: 16px;
+}
+
+#stars {
+    margin-left: 16px;
+}
+
+#stars>span {
+    font-family: ProximaNova-Regular;
+    font-size: 12px;
+    color: #505050;
+    padding-left: 8px;
+}
+
+.given {
+    color: #00A8E2;
+}
+
+.ngiven {
+    color: #ACACAC;
+}
+
+.material-icons{
+    vertical-align: middle;
+}
+
+#trending>a {
+    font-family: ProximaNova-Regular;
+    font-size: 14px;
+    color: #00A8E2;
+    letter-spacing: 0.75px;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 14px;
+}

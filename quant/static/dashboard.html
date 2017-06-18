@@ -4,19 +4,22 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Quant: On the go financial advise.</title>
 </head>
 
 <body>
+    <!--HEADER-->
     <div class="container">
         <div class="row">
             <div class="col-xs-12" id="navbar"><a id="logo-link" href="dashboard.html">Quant</a><button id="signin" class="quant-btn">Sign In</button></div>
         </div>
+        <!--SIDENAV-->
         <div class="row">
             <div class="col-sm-2" id="sidenavmaster">
                 <div id="sidenav">
                     <div class="option active"><img src="icons/dashboard-selected.png">
-                        <p >Dashboard</p>
+                        <p>Dashboard</p>
                     </div>
                     <div class="option"><img src="icons/loan-inactive.png">
                         <p>Loans</p>
@@ -32,8 +35,82 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-7" id="searchbox"></div>
-            <div class="col-sm-3" id="trending"></div>
+            <!--SEARCH-->
+            <div class="col-sm-7" id="searchbox">
+                <form id="schemesearch">
+                    <div id="row1">
+                        <p>Find the best schemes</p>
+                        <input type="radio" value="loans" name="scheme"> <label>Loans</label>
+                        <input type="radio" value="deposits" name="scheme"> <label>Deposits</label>
+                        <input type="radio" value="insurance" name="scheme"> <label>Insurance</label>
+                        <input type="radio" value="retirement" name="scheme"><label> Post-Retirement</label>
+                    </div>
+                    <div id="row2">
+                        <label for="type-loan">Select the type of loan</label>
+                        <select name="type-loan" id="bx1">
+                        <option>Education Loan</option>
+                        <option>Car Loan</option>
+                        <option>Home Loan</option>
+                        <option>Gold Loan</option>
+                    </select>
+                        <br>
+                        <label for="salary">Your Monthly Salary</label>
+                        <input type="text" placeholder="Enter your monthly salary in INR" va;e="salary" id="bx2">
+                        <br>
+                        <label for="emi">Maximum EMI Amount<span>  (Optional)</span></label>
+                        <input type="text" placeholder="Minimum amount you can pay monthly" name="emi" id="bx3">
+                        <br>
+                        <label for="tenure">Tenure<span> (Optional)</span></label>
+                        <input type="number" placeholder="Preferred duration of loan" name="tenure" id="bx4">
+                        <br>
+                    </div>
+                    <div id="row3">
+                        <button type="submit">Search schemes</button> <a href="#">Which type of loan should I select?</a>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-3" id="trendingmaster">
+                <div id="trending">
+                    <p>Trending Schemes</p>
+                    <div class="schemecard">
+                        <a id="name">₹ 20 Lac at ₹4500/month</a>
+                        <p id="sub">
+                            <span>Home Loan</span>
+                            <span>5.5%</span>
+                            <span>10 years</span>
+                        </p>
+                        <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><i class="material-icons ngiven">star_border</i><span>456 customers</span></div>
+                    </div>
+                    <div class="schemecard">
+                        <a id="name">₹ 20 Lac at ₹4500/month</a>
+                        <p id="sub">
+                            <span>Home Loan</span>
+                            <span>5.5%</span>
+                            <span>10 years</span>
+                        </p>
+                        <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><i class="material-icons ngiven">star_border</i><span>456 customers</span></div>
+                    </div>
+                    <div class="schemecard">
+                        <a id="name">₹ 20 Lac at ₹4500/month</a>
+                        <p id="sub">
+                            <span>Home Loan</span>
+                            <span>5.5%</span>
+                            <span>10 years</span>
+                        </p>
+                        <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><i class="material-icons ngiven">star_border</i><span>456 customers</span></div>
+                    </div>
+                    <div class="schemecard">
+                        <a id="name">₹ 20 Lac at ₹4500/month</a>
+                        <p id="sub">
+                            <span>Home Loan</span>
+                            <span>5.5%</span>
+                            <span>10 years</span>
+                        </p>
+                        <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><i class="material-icons ngiven">star_border</i><span>456 customers</span></div>
+                    </div>
+                    <a href="#"> View more</a>
+                </div>
+            </div>
         </div>
     </div>
 </body>

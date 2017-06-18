@@ -167,10 +167,17 @@ p {
     font-size: 16px;
 }
 
+#searchbox{
+    padding-right: 0;
+}
+
 #schemesearch {
+    width: 85%;
     background: #FFFFFF;
     border: 1px solid #EFEDEE;
     padding: 24px 32px;
+    float: right;
+    
 }
 
 #row1>p {
@@ -285,7 +292,6 @@ p {
 #row2>input {
     margin-bottom: 8px;
     padding: 4x;
-    border-radius: 0;
     border: 1px solid #CBCBCB;
     color: #505050;
     border-radius: 2px;
@@ -463,3 +469,16 @@ p {
 button:focus {
     outline: none;
 }
+
+#schemesearch>p {
+    font-weight: normal;
+    font-family: ProximaNova-Semibold;
+    font-size: 20px;
+    color: #505050;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 8px;
+    margin-left: 16px;
+}
+
+

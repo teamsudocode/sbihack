@@ -1,0 +1,43 @@
+/*Adding extra css overriding existing CSS because i have written the worst code in the history of mankind and there is no time to fix it*/
+
+#row3>a {
+    margin-left: 16px;
+}
+
+#row3>button {
+    margin: 16px;
+}
+
+#row2>label {
+    margin-left: 16px;
+}
+
+#row2>input {
+    margin-left: 16px;
+    margin-top: 8px;
+    padding: 4x;
+    border: 1px solid #CBCBCB;
+    color: #505050;
+    border-radius: 2px;
+}
+
+
+#box2[placeholder],
+#box3[placeholder],
+#box4[placeholder] {
+    font-family: ProximaNova-Regular;
+    font-size: 14px;
+    padding: 4px;
+    color: #505050;
+}
+
+#row2>select{
+    margin: 8px 16px;
+}
+
+#loans{
+    
+    background: #FFFFFF;
+    border: 1px solid #EFEDEE;
+    padding: 24px 32px;
+}

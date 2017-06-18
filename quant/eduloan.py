@@ -14,6 +14,11 @@ class EduLoan(db.Model):
     Concession = db.Column(db.Float)
     Comments = db.Column(db.String(100))
 
+    def calc_emi(self,N,P) :
+        r = self.EffInterestRate - self.Concession
+        tot_emi = (r*((1 + r)**N)*P)/(((1 + r)**N) - 1)
+        return tot_emi
+
     def __init__(self, Id, LoanType, Tenure, EffInterestRate, ResetPeriod, Nationality, CourseType,
                  InstituteType, InstituteCountry, LoanLimit, Security, Gender, Concession, Comments):
         self.Id = Id

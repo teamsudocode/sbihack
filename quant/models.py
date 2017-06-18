@@ -22,7 +22,7 @@ class Log(db.Model):
     __tablename__ = "log"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    timestamp = db.Column(db.DateTime, default=datetime.utcnow())
+    timestamp = db.Column(db.DateTime, default=datetime.now())
     userid = db.Column(db.Integer, ForeignKey('user.id'))
     productid = db.Column(db.Integer, ForeignKey('product.id'))
 
@@ -41,7 +41,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(50), nullable=False)
     cif = db.Column(db.String(20), unique=True)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow())
+    created_at = db.Column(db.DateTime, default=datetime.now())
 
     def __init__(self, name, cif):
         self.name = name
@@ -72,7 +72,7 @@ class Product(db.Model):
 class Review(db.Model):
     """collection of all users"""
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow())
+    created_at = db.Column(db.DateTime, default=datetime.now())
     userid = db.Column(db.Integer, db.ForeignKey('user.id'))
     productid = db.Column(db.Integer, db.ForeignKey('product.id'))
     rating = db.Column(db.String(2), nullable=False)

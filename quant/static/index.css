@@ -424,13 +424,12 @@ p {
     height: 200px;
 }
 
-#credit {
+#credit>p {
     font-weight: normal;
     font-family: ProximaNova-Semibold;
     font-size: 16px;
     color: #00C853;
     padding-top: 16px;
-    float: left;
 }
 
 #debit {
@@ -438,6 +437,29 @@ p {
     font-family: ProximaNova-Semibold;
     font-size: 16px;
     color: #F44336;
-    padding-top: 16px;
+    padding-top: 8px;
+}
+
+#userstats>h2>button {
     float: right;
+    padding: 4px 8px;
+    font-family: ProximaNova-Regular;
+    font-size: 12px;
+    color: white;
+    background-color: #00A8E2;
+    border: 1px solid #00A8E2;
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+    border-radius: 2px;
+    line-height: 12px;
+}
+
+#userstats>h2>button:hover {
+    transform: scale(1.01);
+    box-shadow: 0 2px 4px 0 rgba(0, 168, 226, 0.33);
+}
+
+button:focus {
+    outline: none;
 }

@@ -42,52 +42,19 @@
             </div>
             <!--SEARCH-->
             <div class="col-sm-7" id="userstats">
-                <h2>Your Month in a review</h2>
+                <h2>Your Month in a review<button>2 pending EMIs </button></h2>
                 <div id="expensediv">
                     <canvas id="expenses"></canvas>
                 </div>
                 <div>
-                    <span id="credit">Amount Credited: ₹3487</span>
-                    <span id="debit">Amount Debited: ₹4567</span>
+                    <div id="credit"><p>Amount Credited: ₹3487</p></div>
+                    <div id="debit">Amount Debited: ₹4567</div>
                 </div>
-            </div>
-
-            <div class="col-sm-7" id="searchbox">
-                <form id="schemesearch">
-                    <div id="row1">
-                        <p>Find the best schemes</p>
-                        <input type="radio" value="loans" name="scheme" checked> <label>Loans</label>
-                        <input type="radio" value="deposits" name="scheme"> <label>Deposits</label>
-                        <input type="radio" value="insurance" name="scheme"> <label>Insurance</label>
-                        <input type="radio" value="retirement" name="scheme"><label> Post-Retirement</label>
-                    </div>
-                    <div id="row2">
-                        <label for="type-loan">Select the type of loan</label>
-                        <select name="type-loan" id="bx1">
-                        <option>Education Loan</option>
-                        <option>Car Loan</option>
-                        <option>Home Loan</option>
-                        <option>Gold Loan</option>
-                    </select>
-                        <br>
-                        <label for="salary">Your Monthly Salary</label>
-                        <input type="text" placeholder="Monthly salary in INR" name="salary" id="bx2">
-                        <br>
-                        <label for="emi">Maximum EMI Amount<span>  (Optional)</span></label>
-                        <input type="text" placeholder="EMI per month in INR" name="emi" id="bx3">
-                        <br>
-                        <label for="tenure">Tenure<span> (Optional)</span></label>
-                        <input type="number" placeholder="Duration of loan" name="tenure" id="bx4" min=0>
-                        <br>
-                    </div>
-                    <div id="row3">
-                        <button type="submit">Search schemes</button> <a href="#">Which type of loan should I select?</a>
-                    </div>
-                </form>
+                <button class="quant-btn">Download mini-statement</button>
             </div>
             <div class="col-sm-3" id="trendingmaster">
                 <div id="trending">
-                    <p>Trending Schemes</p>
+                    <p>Recommended schemes</p>
                     <div class="schemecard">
                         <a id="name">₹ 20 Lac at ₹4500/month</a>
                         <p id="sub">

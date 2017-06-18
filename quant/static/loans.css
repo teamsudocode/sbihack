@@ -102,6 +102,9 @@
     letter-spacing: 1px;
     width: 100%;
     background: #00A8E2;
+    transition-property: all;
+    transition-timing-function: ease-out;
+    transition-duration: 0.2s;
 }
 
 .product-card>button:focus {

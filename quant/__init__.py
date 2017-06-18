@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 from flask import Flask, render_template, jsonify, request
-from models import *
+from quant.models import *
 
 app = create_app()
 app.app_context().push()

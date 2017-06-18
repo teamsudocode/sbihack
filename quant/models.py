@@ -99,6 +99,57 @@ class Review(db.Model):
             self.id, self.userid, self.productid, self.rating, self.comment, self.user, self.product)
 
 
+class Account(db.Model):
+    """collection of all bank accounts"""
+    # sqlite doesn't allow floating points, so store as strings
+    AccountNumber = db.Column(db.String(20), primary_key=True)
+    AccountCategory = db.Column(db.String(1))
+    AccountOpeningDate = db.Column(db.String(4))
+    AccountStatus = db.Column(db.String(10))
+    AccountType = db.Column(db.String(30))
+    AccountTypeCode = db.Column(db.String(5))
+    ApprovedSanctionedAmount = db.Column(db.String(10))
+    AvailableBalance = db.Column(db.String(10))
+    Currency = db.Column(db.String(5))
+    DPAvailable = db.Column(db.String(5))
+    HomeBranch = db.Column(db.String(5))
+    IntCategory = db.Column(db.String(5))
+    InterestRate = db.Column(db.String(5))
+    Link = db.Column(db.String(5))
+    MaturityAmount = db.Column(db.String(10))
+    MaturityDate = db.Column(db.String(8))
+    PrincipleAmount = db.Column(db.String(10))
+    TermPeriod = db.Column(db.String(10))
+    TotalBalance = db.Column(db.String(10))
+
+    def __init__(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
+    def __repr__(self):
+        return "<Account balance='%f' type='%s'>" % (
+            self.balance, self.AccountCategory)
+
+    @property
+    def balance(self):
+        return float(self.TotalBalance)
+
+    @property
+    def principle_amount(self):
+        return float(self.PrincipleAmount)
+
+    @property
+    def created_at(self):
+        try:
+            return datetime.strptime(self.AccountOpeningDate, "%Y%m%d")
+        except ValueError:
+            return self.AccountOpeningDate
+
+    @property
+    def maturity_date(self):
+        return datetime.strptime(self.MaturityDate, "%Y%m%d")
+
+
 if __name__ == "__main__":
     """For testing purposes
     Use the same code for the main app
@@ -139,19 +190,74 @@ if __name__ == "__main__":
         # you can also perform db.session.commit() for safety
     else:
         db.session.add(Review(userid=1, productid=2, rating="0.6", comment="not good"))
-    print(User.query.all())
-    print(Product.query.all())
-    print(Review.query.all())
-    print(Review.query.filter_by(productid=1).first())
-    print(Review.query.filter_by(productid=2).first())
+        print(User.query.all())
+        print(Product.query.all())
+        print(Review.query.all())
+        print(Review.query.filter_by(productid=1).first())
+        print(Review.query.filter_by(productid=2).first())
 
     logs = [
-        Log(userid=1, productid=2),
-        Log(userid=1, productid=1),
-        Log(userid=2, productid=1),
-        Log(userid=2, productid=2)
+        Log(userid=1, productid=2, timestamp=datetime.strptime("2017-05-04", "%Y-%m-%d")),
+        Log(userid=1, productid=1, timestamp=datetime.strptime("2017-05-29", "%Y-%m-%d")),
+        Log(userid=2, productid=1, timestamp=datetime.strptime("2017-04-03", "%Y-%m-%d")),
+        Log(userid=2, productid=2, timestamp=datetime.strptime("2017-06-13", '%Y-%m-%d'))
     ]
     db.session.add_all(logs)
     db.session.commit()
     for log in (Log.query.all()):
         print(log)
+        print(log.id, log.product.name)
+
+    print(Log.query.filter_by(productid=1).all())
+    print()
+    print("filtered logs")
+    start_date = datetime.strptime("2017-04-01", "%Y-%m-%d")
+    end_date = datetime.strptime("2017-05-01", "%Y-%m-%d")
+    print(Log.query.filter(Log.timestamp > start_date, Log.timestamp < end_date).all())
+
+    acc = Account(**{
+        "AccountCategory": "L",
+        "AccountNumber": "00000030001514444",
+        "AccountOpeningDate": "00000000",
+        "AccountStatus": "OPEN",
+        "AccountType": "BR-STUDENTLN ISB STUDENTS",
+        "AccountTypeCode": "6251",
+        "ApprovedSanctionedAmount": "100000.00",
+        "AvailableBalance": "0",
+        "Currency": "INR",
+        "DPAvailable": "0.00",
+        "HomeBranch": "00437",
+        "IntCategory": "4303",
+        "InterestRate": "9.75",
+        "Link": "OWN",
+        "MaturityAmount": "0.00",
+        "MaturityDate": "",
+        "PrincipleAmount": "0.00",
+        "TermPeriod": "",
+        "TotalBalance": "0.00"
+    })
+    print(acc)
+    acc = Account(**{
+        "AccountCategory": "L",
+        "AccountNumber": "00000030001514012",
+        "AccountOpeningDate": "00000000",
+        "AccountStatus": "OPEN",
+        "AccountType": "BR-STUDENTLN ISB STUDENTS",
+        "AccountTypeCode": "6251",
+        "ApprovedSanctionedAmount": "",
+        "AvailableBalance": "600000.00",
+        "Currency": "INR",
+        "DPAvailable": "0.05",
+        "HomeBranch": "00438",
+        "IntCategory": "1101",
+        "InterestRate": "4.00",
+        "Link": "OWN",
+        "MaturityAmount": "0.01",
+        "MaturityDate": "",
+        "PrincipleAmount": "600000.00",
+        "TermPeriod": "",
+        "TotalBalance": "600000.00"
+    })
+    print(acc)
+    print(acc.balance, type(acc.balance))
+    print(acc.created_at)

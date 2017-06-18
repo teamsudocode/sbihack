@@ -6,7 +6,6 @@ app.app_context().push()
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
-print(db)
 db.create_all(app=app)
 
 
@@ -22,12 +21,29 @@ def customer():
 
 @app.route("/admin")
 def admin():
+	# report of hits on distinct products
+	logs = Log.query.filter_by()
 	return render_template("admin.html")
 
 
 @app.route("/support")
 def support():
 	return render_template("support.html")
+
+
+@app.route("/webhook/update_accounts/<account_number>")
+def update_accounts(account_number):
+	""" Update the list of accounts for given account number
+	"""
+	return "OK"
+
+
+@app.route("/webhook/mini_statement/<account_number>")
+def fetch_mini_statement(account_number):
+	""" Update available transactions in database
+	"""
+	return 'OK'
+
 
 
 @app.errorhandler(404)

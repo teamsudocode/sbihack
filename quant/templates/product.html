@@ -25,4 +25,15 @@
     </table>
 </div>
 
+<div class="row">
+    <h4>Enter your review</h4>
+    <form action="/submit_review" method="POST">
+        <input name="userid" type="number" value="{{ me.id }}" hidden />
+        <input name="productid" type="number" value="{{ product.id }}" hidden />
+        <input name="rating" type="number" step="0.1" value="0" min="0" max="5" />
+        <input name="comment" type="text" placeholder="This is what I feel about the product..." />
+        <button class="btn btn-primary">Submit review</button>
+    </form>
+</div>
+
 {% endblock %}

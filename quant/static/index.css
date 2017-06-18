@@ -7,10 +7,14 @@ body {
 }
 
 @font-face {
-    font-family: 'proxima_nova_light';
+    font-family: 'ProximaNova-Light';
     src: url('fonts/proximanova-light-webfont.woff2') format('woff2'), url('fonts/proximanova-light-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+}
+
+p {
+    margin: 0;
 }
 
 @font-face {
@@ -49,7 +53,7 @@ body {
 #logo-link {
     text-align: center;
     line-height: 28px;
-    margin: 16px  auto;
+    margin: 16px auto;
     font-family: ProximaNova-Regular;
     font-size: 28px;
     color: #00A8E2;
@@ -93,3 +97,47 @@ body {
     display: flex;
     justify-content: flex-end;
 }
+
+#sidenavmaster {
+    padding: 0;
+}
+
+#sidenav {
+    width: 80%;
+    background: #FFFFFF;
+    border: 1px solid #EFEDEE;
+}
+
+.option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid #EAEAEA;
+}
+
+.option>p {
+    font-family: ProximaNova-Light;
+    font-size: 16px;
+    color: #AAAAAA;
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+
+.option>img {
+    height: 72px;
+}
+
+.active {
+    border-left: 5px solid var(--sapphire-blue);
+}
+
+.active>p {
+    color: #505050;
+    font-family: ProximaNova-Regular;
+    font-size: 16px;
+}
+
+#searchbox {}
+
+#trending {}

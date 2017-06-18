@@ -126,8 +126,23 @@ p {
 
 .option>img {
     height: 72px;
+    transition-property: all;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
 }
 
+.option:hover{
+    cursor: pointer;
+}
+
+.option:hover>p{
+    font-family: ProximaNova-Regular;
+    color: #505050;
+}
+
+.option:hover>img{
+    transform: scale(1.1);
+}
 .active {
     border-left: 5px solid var(--sapphire-blue);
 }

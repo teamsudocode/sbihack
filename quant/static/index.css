@@ -197,12 +197,6 @@ p {
     margin-top: 24px;
 }
 
-#row2>input,
-select {
-    margin-bottom: 8px;
-    padding: 2px;
-}
-
 #row3>button {
     border: none;
     padding: 14px;
@@ -256,10 +250,47 @@ select {
     margin-left: 16px;
 }
 
-input[placeholder] {
+#row2>select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     font-family: ProximaNova-Regular;
     font-size: 14px;
-    /* color: #CBCBCB; */
+    background: transparent;
+    margin-bottom: 8px;
+    padding: 4px;
+    border: 1px solid #CBCBCB;
+    border-radius: 2px;
+    color: #505050;
+}
+
+#row2>select:focus {
+    outline: none;
+    border: 1px solid var(--sapphire-blue);
+    
+}
+
+#row2>input {
+    margin-bottom: 8px;
+    padding: 4x;
+    border-radius: 0;
+    border: 1px solid #CBCBCB;
+    color: #505050;
+    border-radius: 2px;
+}
+
+#row2>input:focus {
+    outline: none;
+    border: 1px solid var(--sapphire-blue);
+}
+
+#bx2[placeholder],
+#bx3[placeholder],
+#bx4[placeholder] {
+    font-family: ProximaNova-Regular;
+    font-size: 14px;
+    padding: 4px;
+    color: #505050;
 }
 
 #trendingmaster {

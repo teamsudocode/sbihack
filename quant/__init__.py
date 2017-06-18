@@ -34,6 +34,13 @@ def product_info(id):
                            me=me)
 
 
+def create_issue_if_required(review_object):
+    """implement the logic to check problems here
+    """
+    print("review handler returning")
+    pass
+
+
 @app.route("/submit_review", methods=["POST"])
 def submit_review():
     """ The request form should contain following:
@@ -45,24 +52,26 @@ def submit_review():
         rating = request.form["rating"]
         comment = request.form["comment"]
         # check existing review
-        rev = Review.query.filter_by(productid=productid, userid=userid).first()
-        print("existing review", rev)
-        if not rev:
+        old_rev = Review.query.filter_by(productid=productid, userid=userid).first()
+        print("existing review", old_rev)
+        if not old_rev:
             new_rev = Review(userid=userid, productid=productid, rating=rating, comment=comment)
             db.session.add(new_rev)
             print("new review added")
         else:
-            rev.rating = rating
-            rev.comment = comment
-            rev.created_at = datetime.now()
+            old_rev.rating = rating
+            old_rev.comment = comment
+            old_rev.created_at = datetime.now()
+            new_rev = old_rev
             print("review updated")
         db.session.commit()
-    except KeyError as err:
+    except KeyError:
         return "Incomplete parameters", 400
     except sqlalchemy.exc.IntegrityError:
         # should not happen
         return "Database crashed", 500
     else:
+        create_issue_if_required(new_rev)
         return "OK"
 
 

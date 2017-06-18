@@ -99,6 +99,25 @@ class Review(db.Model):
             self.id, self.userid, self.productid, self.rating, self.comment, self.user, self.product)
 
 
+class Issue(db.Model):
+    """issue to be resolved if any
+    status: open / closed
+    """
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    created_at = db.Column(db.DateTime, default=datetime.now())
+    reviewid = db.Column(db.Integer, db.ForeignKey("review.id"), nullable=False)
+    status = db.Column(db.String(10), default="open")
+
+    review = relationship("Review")
+
+    def __init__(self, reviewid):
+        self.reviewid = reviewid
+
+    def __repr__(self):
+        return "<Issue id='%s', created_at='%s', userid='%s', productid='%s'" % (
+            self.id, self.created_at, self.review.user.name, self.review.product.name)
+
+
 class Account(db.Model):
     """collection of all bank accounts"""
     # sqlite doesn't allow floating points, so store as strings
@@ -183,6 +202,9 @@ if __name__ == "__main__":
     ]
     db.session.add_all(reviews)
     db.session.commit()
+    issue = Issue(reviewid=2)
+    db.session.add(issue)
+    print('issue created', Issue.query.filter_by(id=1).first())
     # re = Review(userid=1, productid=2, rating="0.6", comment="haha not good")
     # if above review exists
     # otherwise you'd get sqlalchemy.exc.IntegrityError, so try---catch

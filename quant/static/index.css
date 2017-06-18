@@ -200,6 +200,12 @@ p {
 #row2>input,
 select {
     margin-bottom: 8px;
+    padding: 2px;
+}
+
+#row2 > select {
+    padding: 2px 30px 2px 2px;
+    background: transparent;
 }
 
 #row3>button {
@@ -258,7 +264,7 @@ select {
 input[placeholder] {
     font-family: ProximaNova-Regular;
     font-size: 14px;
-    color: #CBCBCB;
+    /* color: #CBCBCB; */
 }
 
 #trendingmaster {

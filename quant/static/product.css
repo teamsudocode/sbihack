@@ -91,12 +91,12 @@
     margin-bottom: 8px;
 }
 
-.question>div{
+.question>div {
     height: 20px;
     width: 90%;
-background: #00A8E2;
-border-radius: 6px;
-     margin-bottom: 8px;
+    background: #00A8E2;
+    border-radius: 6px;
+    margin-bottom: 8px;
 }
 
 .question>p {
@@ -105,5 +105,63 @@ border-radius: 6px;
     font-family: ProximaNova-Regular;
     font-size: 16px;
     color: #00A8E2;
-     margin-bottom: 8px;
+    margin-bottom: 8px;
+}
+
+.commentbox {
+    background-color: #FFFFFF;
+    border: 1px solid #EFEDEE;
+}
+
+.commentcard {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 16px;
+    background-color: white;
+    padding: 8px 16px;
+}
+
+#dp {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin-right: 16px;
+}
+
+#dp>img{
+    height: 40px;
+    width: 40px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 4px;
+}
+
+#dp>p {
+    font-family: ProximaNova-Regular;
+    font-size: 12px;
+    text-align: center;
+    color: #000000;
+}
+
+#comment {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+}
+
+#comment>h1 {
+    font-weight: normal;
+    margin: 0;
+    font-family: ProximaNova-Regular;
+    font-size: 16px;
+    color: #000000;
+}
+
+#comment>p {
+    font-family: ProximaNova-Light;
+    font-size: 14px;
+    color: #5A5A5A;
 }

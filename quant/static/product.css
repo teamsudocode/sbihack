@@ -46,7 +46,7 @@
     margin-bottom: 8px;
 }
 
-#ind-rate{
+#ind-rate {
     margin-bottom: 8px;
 }
 
@@ -66,4 +66,44 @@
     letter-spacing: 0;
     vertical-align: middle;
     margin-left: 8px;
+}
+
+.reviewcard {
+    background: #FFFFFF;
+    border: 1px solid #EFEDEE;
+    padding: 16px;
+}
+
+.question {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.question>h2 {
+    font-weight: normal;
+    margin: 0;
+    font-family: ProximaNova-Regular;
+    font-size: 16px;
+    color: #505050;
+    margin-bottom: 8px;
+}
+
+.question>div{
+    height: 20px;
+    width: 90%;
+background: #00A8E2;
+border-radius: 6px;
+     margin-bottom: 8px;
+}
+
+.question>p {
+    text-align: center;
+    margin: 0;
+    font-family: ProximaNova-Regular;
+    font-size: 16px;
+    color: #00A8E2;
+     margin-bottom: 8px;
 }

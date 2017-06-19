@@ -25,10 +25,10 @@
                     <div class="option"><img src="icons/loan-inactive.png">
                         <p>Loans</p>
                     </div>
-                    <div class="option active"><img src="icons/deposit-selected.png">
+                    <div class="option"><img src="icons/deposit-inactive.png">
                         <p>Deposits</p>
                     </div>
-                    <div class="option"><img src="icons/insurance-inactive.png">
+                    <div class="option active"><img src="icons/insurance-selected.png">
                         <p>Insurance</p>
                     </div>
                     <div class="option"><img src="icons/support-inactive.png">
@@ -38,11 +38,24 @@
             </div>
             <!--loans results-->
             <div class="col-sm-6" id="loans">
-                <h2>Showing 1-25 of the total 1625 deposits schemes</h2>
+                <h2>Showing 1-25 of the total 1239 insurance schemes</h2>
                 <div id="product-list">
                     <div class="product-card">
-                        <label>Fixed Deposit</label>
-                        <h1>Double your money in 30 years</h1>
+                        <label>Whole Life</label>
+                        <h1>Complete life insurance</h1>
+                        <h2>Rate of Interest: 15%</h2>
+                        <h2>Minimum Deposit: ₹4500/month</h2>
+                        <div id="ratings">
+                            <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span></div>
+                        </div>
+                        <div id="customers">
+                            <i class="material-icons">people_outline</i>Recommended by 213 users</div>
+                        <button id="view">View Details</button>
+                    </div>
+
+                    <div class="product-card">
+                        <label>Whole Life</label>
+                        <h1>Complete life insurance</h1>
                         <h2>Rate of Interest: 15%</h2>
                         <h2>Minimum Deposit: ₹4500/month</h2>
                         <div id="ratings">
@@ -53,8 +66,8 @@
                         <button id="view">View Details</button>
                     </div>
                     <div class="product-card">
-                        <label>Fixed Deposit</label>
-                        <h1>Double your money in 30 years</h1>
+                        <label>Whole Life</label>
+                        <h1>Complete life insurance</h1>
                         <h2>Rate of Interest: 15%</h2>
                         <h2>Minimum Deposit: ₹4500/month</h2>
                         <div id="ratings">
@@ -65,8 +78,8 @@
                         <button id="view">View Details</button>
                     </div>
                     <div class="product-card">
-                        <label>Fixed Deposit</label>
-                        <h1>Double your money in 30 years</h1>
+                        <label>Whole Life</label>
+                        <h1>Complete life insurance</h1>
                         <h2>Rate of Interest: 15%</h2>
                         <h2>Minimum Deposit: ₹4500/month</h2>
                         <div id="ratings">
@@ -76,19 +89,6 @@
                             <i class="material-icons">people_outline</i>Recommended by 213 users</div>
                         <button id="view">View Details</button>
                     </div>
-                    <div class="product-card">
-                        <label>Fixed Deposit</label>
-                        <h1>Double your money in 30 years</h1>
-                        <h2>Rate of Interest: 15%</h2>
-                        <h2>Minimum Deposit: ₹4500/month</h2>
-                        <div id="ratings">
-                            <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span></div>
-                        </div>
-                        <div id="customers">
-                            <i class="material-icons">people_outline</i>Recommended by 213 users</div>
-                        <button id="view">View Details</button>
-                    </div>
-                    
                 </div>
             </div>
 
@@ -97,29 +97,30 @@
             <div class="col-sm-4" id="searchbox">
 
                 <form id="schemesearch">
-                    <p>Search for deposits</p>
+                    <p>Search for insurance schemes</p>
                     <div id="row2">
                         <label for="type-loan">Select the type of deposits</label>
                         <br>
                         <select name="type-loan" id="box1">
-                        <option>Fixed Deposit</option>
-                        <option>Time Deposit</option>
-                        <option>Demand Deposit</option>
+                        <option>Term Life</option>
+                        <option>Whole life</option>
+                        <option>Moneyback</option>
+                            <option>Endowment</option>
                     </select>
 
                         <br><br>
                         <label for="salary">Your Monthly Salary</label><br>
                         <input type="text" placeholder="Monthly salary in INR" name="salary" id="box2">
                         <br><br>
-                        <label for="emi">Desirable Rate of interest<span>  (Optional)</span></label>
-                        <input type="text" placeholder="Minimum ROI" name="emi" id="box3">
+                        <label for="emi">Maximum EMI Amount<span>  (Optional)</span></label>
+                        <input type="text" placeholder="EMI per month in INR" name="emi" id="box3">
                         <br><br>
                         <label for="tenure">Tenure<span> (Optional)</span></label><br>
-                        <input type="number" placeholder="Duration of deposit" name="tenure" id="box4" min=0>
+                        <input type="number" placeholder="Duration of insurance" name="tenure" id="box4" min=0>
                         <br>
                     </div>
                     <div id="row3">
-                        <button type="submit">Search schemes</button> <br><a href="#">Which type of deposit should I select?</a>
+                        <button type="submit">Search schemes</button> <br><a href="#">Which type of insurance should I select?</a>
                     </div>
                 </form>
             </div>

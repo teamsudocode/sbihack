@@ -41,7 +41,11 @@
     margin-bottom: 16px;
 }
 
-.trend-card>h1>img,#query>h1>img {
+#debate{
+    margin-top: 24px;
+}
+
+.trend-card>h1>img,#query>h1>img,#debate>h1>img {
     height: 24px;
     margin-right: 8px;
 }
@@ -72,18 +76,18 @@
     float: right;
 }
 
-#query,.trend-card {
+#query,.trend-card,#debate {
     background-color: #fff;
     border: 1px solid #EFEDEE;
     padding: 24px 16px;
 }
 
-#query{
+#query,#debate{
     width: 45%;
 }
 
 #query>h1,
-#top-search>h1 {
+#top-search>h1,#debate>h1,.trend-card>h1 {
     font-weight: normal;
     font-family: ProximaNova-Semibold;
     font-size: 20px;
@@ -92,6 +96,7 @@
     padding: 0;
     margin-left: 12px;
     vertical-align: middle;
+    margin-bottom: 8px;
 }
 
 .trend-list>button {

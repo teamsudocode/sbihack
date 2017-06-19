@@ -1,0 +1,69 @@
+#details>h1,
+#reviews>h1 {
+    font-family: ProximaNova-SemiBold;
+    font-size: 20px;
+    font-weight: normal;
+    color: #505050;
+    line-height: 20px;
+    letter-spacing: 0;
+}
+
+.card-detailed {
+    background: #FFFFFF;
+    border: 1px solid #EFEDEE;
+    padding: 16px 20px;
+}
+
+.card-detailed>h1 {
+    font-family: ProximaNova-Regular;
+    font-size: 32px;
+    color: #505050;
+    font-weight: normal;
+    letter-spacing: 0;
+    margin: 0;
+    margin-bottom: 8px;
+}
+
+.card-detailed>button {
+    font-family: ProximaNova-Regular;
+    font-size: 13px;
+    color: #666666;
+    padding: 4px 8px;
+    border: none;
+    background: #E7E7E7;
+    margin-bottom: 8px;
+}
+
+.card-detailed>button:focus {
+    outline: none;
+}
+
+.card-detailed>p {
+    font-family: ProximaNova-Regular;
+    font-size: 18px;
+    color: #AAAAAA;
+    letter-spacing: 0;
+    margin-bottom: 8px;
+}
+
+#ind-rate{
+    margin-bottom: 8px;
+}
+
+#ind-rate>span {
+    font-family: ProximaNova-Regular;
+    font-size: 18px;
+    color: #00A8E2;
+    letter-spacing: 0;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+#ind-users>span {
+    font-family: ProximaNova-Regular;
+    font-size: 16px;
+    color: #666666;
+    letter-spacing: 0;
+    vertical-align: middle;
+    margin-left: 8px;
+}

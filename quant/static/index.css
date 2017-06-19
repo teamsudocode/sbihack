@@ -44,7 +44,7 @@ p {
     z-index: 3;
 }
 
-.col-xs-12 {
+#navbar {
     height: 62px;
     background: #FFFFFF;
     border: 1px solid #EFEDEE;

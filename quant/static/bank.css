@@ -30,7 +30,8 @@
     padding-top: 24px;
 }
 
-#online>h1,#hits>h1 {
+#online>h1,
+#hits>h1 {
     font-weight: normal;
     font-family: ProximaNova-Semibold;
     font-size: 24px;
@@ -40,7 +41,13 @@
     margin-bottom: 16px;
 }
 
-#online>p,#hits>p {
+.trend-card>h1>img,#query>h1>img {
+    height: 24px;
+    margin-right: 8px;
+}
+
+#online>p,
+#hits>p {
     font-weight: normal;
     font-family: ProximaNova-Semibold;
     font-size: 32px;
@@ -58,4 +65,98 @@
 #hits {
     text-align: center;
     width: 50%;
+}
+
+#trends {
+    padding: 0;
+    float: right;
+}
+
+#query,.trend-card {
+    background-color: #fff;
+    border: 1px solid #EFEDEE;
+    padding: 24px 16px;
+}
+
+#query{
+    width: 45%;
+}
+
+#query>h1,
+#top-search>h1 {
+    font-weight: normal;
+    font-family: ProximaNova-Semibold;
+    font-size: 20px;
+    color: #505050;
+    margin: 0;
+    padding: 0;
+    margin-left: 12px;
+    vertical-align: middle;
+}
+
+.trend-list>button {
+    font-family: ProximaNova-Regular;
+    font-size: 12px;
+    color: #666666;
+    padding: 4px 8px;
+    border: none;
+    background: #E7E7E7;
+    margin-bottom: 8px;
+    margin-left: 16px;
+    margin-top: 8px;
+}
+
+.trend-list>button:focus {
+    outline: none;
+}
+
+.trend-list>a {
+    font-family: ProximaNova-Regular;
+    font-size: 18px;
+    color: #505050;
+    letter-spacing: 0;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: 16px;
+    transition-property: all;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+}
+
+.trend-list>a:hover {
+    color: #00A8E2;
+}
+
+.trends-card{
+    margin-bottom: 16px;
+}
+
+.trend-list {
+    padding: 8px 0px;
+    border-bottom: 1px solid #dedede;
+    margin-bottom: 8px;
+}
+
+.squery {
+    margin-top: 16px;
+    margin-left: 12px;
+    background-color: #00A8E2;
+    padding: 8px 16px;
+    border: none;
+    color: white;
+    font-family: ProximaNova-Regular;
+    border-radius: 2px;
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.trends-card>span {
+    font-family: ProximaNova-Regular;
+    color: #acacac;
+    margin-left: 8px;
+}
+
+.squery:hover {
+    box-shadow: 0 2px 4px 0 rgba(0, 168, 226, 0.33);
 }

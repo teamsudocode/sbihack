@@ -1,10 +1,11 @@
-var ctx = document.getElementById("expenses").getContext('2d');
-var myChart = new Chart(ctx, {
+
+var ctx2 = document.getElementById('live').getContext('2d');
+var myChart2 = new Chart(ctx2,{
     type: 'line',
     data: {
-        labels: ["1 June","5 June","10 June", "15 June", "20 June"],
+        labels: ["1:15PM","1:30PM","1.45PM", "2.00PM", "2.15PM"],
         datasets: [{
-            data: [3500, 4500, 2500, 5000, 1200],
+            data: [100,200,300,50,230],
             backgroundColor: [
                 'rgba(0, 168, 226, 0.2)'
             ],

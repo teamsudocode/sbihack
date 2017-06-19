@@ -1,0 +1,61 @@
+#livdiv {
+    height: 300px;
+    margin-bottom: 24px;
+}
+
+#card {
+    background-color: #fff;
+    border: 1px solid #EFEDEE;
+    padding: 24px 16px;
+}
+
+#dash {
+    padding: 0;
+}
+
+#card>h1 {
+    font-weight: normal;
+    font-family: ProximaNova-Semibold;
+    font-size: 20px;
+    color: #505050;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 16px;
+}
+
+#liv {
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid #00A8E2;
+    padding-top: 24px;
+}
+
+#online>h1,#hits>h1 {
+    font-weight: normal;
+    font-family: ProximaNova-Semibold;
+    font-size: 24px;
+    color: #505050;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 16px;
+}
+
+#online>p,#hits>p {
+    font-weight: normal;
+    font-family: ProximaNova-Semibold;
+    font-size: 32px;
+    color: #00C853;
+    margin: 0;
+    padding: 0;
+}
+
+#online {
+    text-align: center;
+    width: 50%;
+    border-right: 1px solid #505050;
+}
+
+#hits {
+    text-align: center;
+    width: 50%;
+}

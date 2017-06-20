@@ -81,16 +81,33 @@ eduloans = [
 db.session.add_all(eduloans)
 
 homeloan = [
-        Homeloan(1, 'SBI_Home_Loan_1', 11.9, 20, 100000, 3000000, 0, 1, 18, 70, 'Senior Citizen', 'For personal use')
-        Homeloan(2, 'SBI_Home_Loan_2', 8.5, 25, 100000, 5000000, 0, 1, 18, 70, 'Female', 'Ladies Quota')
-        Homeloan(3, 'SBI_Home_Loan_3', 9.7, 35, 100000, 10000000, 0, 1, 18, 70, 'Any', 'Home Only')
-        Homeloan(4, 'SBI_Home_Loan_4', 7.7, 30, 100000, 50000000, 0, 1, 18, 70, 'SC', 'Bahut faydaa hai')
+    Homeloan(1, 'SBI_Home_Loan_1', 11.9, 20, 100000, 3000000, 0, 1, 18, 70, 'Senior Citizen', 'For personal use')
+    Homeloan(2, 'SBI_Home_Loan_2', 8.5, 25, 100000, 5000000, 0, 1, 18, 70, 'Female', 'Ladies Quota')
+    Homeloan(3, 'SBI_Home_Loan_3', 9.7, 35, 100000, 10000000, 0, 1, 18, 70, 'Any', 'Home Only')
+    Homeloan(4, 'SBI_Home_Loan_4', 7.7, 30, 100000, 50000000, 0, 1, 18, 70, 'SC', 'Bahut faydaa hai')
 	Homeloan(5, 'SBI_Home_Loan_5', 9.9, 20, 100000, 500000, 0, 1, 18, 70, 'Any', 'kam loge to yahi hoga')
 	Homeloan(6, 'SBI_Home_Loan_6', 7.5, 30, 100000, 50000000, 0, 1, 18, 70, 'ST', 'Bahut faydaa hai')
 	Homeloan(7, 'SBI_Home_Loan_7', 8.0, 25, 100000, 50000000, 0, 1, 18, 28, 'Any', 'Young Raho')
 	Homeloan(8, 'SBI_Home_Loan_8', 9, 8, 100000, 50000000, 0, 1, 18, 70, 'Any', 'Fast repayment')
 	
 ]
+db.session.add_all(homeloan)
 
- db.session.add_all(homeloan)
- db.session.commit()
+insurance = [
+    Insurance(1, 'SBI_Insurance_1', 24000, 10, 30, 8, 30, 70, 40, 80, "Yearly", 24000, 'Infinite', 'Retirment',220)
+    Insurance(2, 'SBI_Insurance_1', 24000, 10, 30, 8, 30, 70, 40, 80, "Half-Yearly", 15000, 'Infinite', 'Retirment',220)
+    Insurance(3, 'SBI_Insurance_1', 24000, 10, 30, 8, 30, 70, 40, 80, "Quaterly", 7500, 'Infinite', 'Retirment',220)
+    Insurance(4, 'SBI_Insurance_1', 24000, 10, 30, 8, 30, 70, 40, 80, "Monthly", 2500, 'Infinite', 'Retirment',220)
+
+    Insurance(5, 'SBI_Insurance_2', 6000, 0, 70, 15, 0, 13, 21, 50, "Yearly", 6000, 'Infinite', 'Child',250)
+    Insurance(6, 'SBI_Insurance_2', 6000, 0, 70, 15, 0, 13, 21, 50, "Half-Yearly", 3000, 'Infinite', 'Child',250)
+    Insurance(7, 'SBI_Insurance_2', 6000, 0, 70, 15, 0, 13, 21, 50, "Quaterly", 1500, 'Infinite', 'Child',250)
+    Insurance(8, 'SBI_Insurance_2', 6000, 0, 70, 15, 0, 13, 21, 50, "Monthly", 500, 'Infinite', 'Child',250)
+	
+    Insurance(9, 'SBI_Insurance_3', 30000, 0, 70, 15, 0, 70, 20, 80, "Yearly", 30000, 'Infinite', 'Any',200)
+    Insurance(10, 'SBI_Insurance_3', 30000, 0, 70, 15, 0, 70, 20, 80, "Yearly", 17000, 'Infinite', 'Any',200)
+    Insurance(11, 'SBI_Insurance_3', 30000, 0, 70, 15, 0, 70, 20, 80, "Yearly", 10000, 'Infinite', 'Any',200)
+    Insurance(12, 'SBI_Insurance_3', 30000, 0, 70, 15, 0, 70, 20, 80, "Yearly", 4000, 'Infinite', 'Any',200)
+]
+db.session.add_all(insurance)
+db.session.commit()

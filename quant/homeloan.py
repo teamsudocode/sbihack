@@ -15,6 +15,11 @@ class Homeloan(db.Model):
     Comments = db.Column(db.String(100))
 
 
+    def calc_emi(self,N,P) :
+        r = self.InterestRate
+        tot_emi = (r*((1 + r)**N)*P)/(((1 + r)**N) - 1)
+        return tot_emi
+    
     def __init__(self, Id, LoanType, LoanName, InterestRate, TenureLowerLimit, TenureUpperLimit, PrincipalLowerLimit, PrincipalUpperLimit, PrePaymentPenalty, FlexiPay, ageLowerLimit, ageUpperLimit, CustomerType, Comments):
         self.Id = Id
         self.LoanType = LoanType

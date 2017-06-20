@@ -101,7 +101,7 @@ class Review(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     created_at = db.Column(db.DateTime, default=datetime.now())
     userid = db.Column(db.Integer, db.ForeignKey('user.id'))
-    productid = db.Column(db.Integer, db.ForeignKey('product.id'))
+    productid = db.Column(db.String(2), db.ForeignKey('product.id'))
     rating = db.Column(db.Integer, nullable=False)
     title = db.Column(db.String(100), nullable=False)
     comment = db.Column(db.String(500))
@@ -122,6 +122,11 @@ class Review(db.Model):
         self.title = title
         self.rating = str(rating)
         self.comment = comment
+
+
+    @property
+    def stars(self):
+        return int(rating)
 
     def __repr__(self):
         return "<Review id='%s', userid='%s', productid='%s', rating='%s', created_at='%s', user='%s', product='%s'>" % (

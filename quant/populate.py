@@ -28,28 +28,22 @@ def randomword(length):
 def randombignum(length):
     return ''.join(random.choice(string.digits) for i in range(length))
 
-for i in range(1,50):
+"""for i in range(1,40):
     curdate = randomDate("2005-01-01", "2017-06-20", random.random())
     temp = Log(userid = i,productid = random.randint(1,5), timestamp= curdate)
     db.session.add(temp)
-    db.session.commit()
+    db.session.commit()"""
 
 for i in range(1,40):
     name = randomword(random.randint(4,9))
     category = random.randint(1,5)
-    title = random.choice(["Home loan for &#8377 20 lac; at &#8377; 15000/month",
-        "Car loan for &#8377 10 lac; at &#8377; 5900/month",
-        "Home loan for &#8377 15 lac; at &#8377; 8000/month",
-        "Home loan for &#8377 10 lac; at &#8377; 6000/month",
-        "Education loan for &#8377 10 lac; at &#8377; 1600/month",
-        "Education loan for &#8377 20 lac; at &#8377; 4500/month"])
     temp = Product(name,category)
     db.session.add(temp)
     db.session.commit()
 
 for i in range(1,40):
     name = randomword(random.randint(4,9))
-    cif = random.randint(1,10000)
+    cif = str(1234*i)
     temp = User(name,cif)
     db.session.add(temp)
     db.session.commit()
@@ -57,7 +51,7 @@ for i in range(1,40):
 for i in range(1,40):
     userid = i
     productid = i
-    rating = random.randint(1,5)
+    rating = str(random.randint(1,5))
     title = randomword(random.randint(5,10))
     comment = randomword(random.randint(5,15))
     temp = Review(userid, productid, rating, title, comment)
@@ -70,9 +64,9 @@ for i in range(1,7) :
     db.session.add(temp)
     db.session.commit()
 
-for i in range(1,50):
+for i in range(1,40):
     account_number =  randombignum(20)
-    owner_cif = randombignum(10)
+    owner_cif = 1234*i
     balance = random.randint(10000,10000000)
     temp = Account(account_number, owner_cif, balance)
     db.session.add(temp)

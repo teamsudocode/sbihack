@@ -272,7 +272,9 @@ class Insurance(db.Model):
 
     Id = db.Column(db.Integer, primary_key=True)
     InsuranceType = db.Column(db.String(80))
-    PolicyTerm = db.Column(db.Float)
+    InsuranceAmount = db.Column(db.Integer)
+    MinPolicyTerm = db.Column(db.Float)
+    MaxPolicyTerm = db.Column(db.Float)
     PayingTerm = db.Column(db.Float)
     MinAgeEntry = db.Column(db.Integer)
     MaxAgeEntry = db.Column(db.Integer)
@@ -282,12 +284,29 @@ class Insurance(db.Model):
     MinPremiumAmount = db.Column(db.Integer)
     MaxPremiumAmount = db.Column(db.String(20))
     Category = db.Column(db.String(80))
+    MaturityRate = db.Column(db.Integer)
 
-    def __init__(self, Id, InsuranceType, PolicyTerm, PayingTerm, MinAgeEntry, MaxAgeEntry, MinAgeMaturity,
-                    MaxAgeMaturity, PremiumFreq, MinPremiumAmount, MaxPremiumAmount, Category):
+    def profit(self, t):
+        r = self.MaturityRate
+        final_amount = (r*(self.InsuranceAmount)*(t))/100
+        if self.PremiumFreq == 'Yearly' :
+            initial_amount = t*self.MinPremiumAmount
+        elif self.PremiumFreq == 'Half-Yearly' :
+            initial_amount = 2*t*self.MinPremiumAmount
+        elif self.PremiumFreq == 'Quaterly' :
+            initial_amount = 4*t*self.MinPremiumAmount
+        elif self.PremiumFreq == 'Monthly' :
+            initial_amount = 12*t*self.MinPremiumAmount
+        return (final_amount - initial_amount)
+
+    def __init__(self, Id, InsuranceType, InsuranceAmount, MinPolicyTerm, MaxPolicyTerm,PayingTerm, MinAgeEntry, MaxAgeEntry, MinAgeMaturity,
+                    MaxAgeMaturity, PremiumFreq, MinPremiumAmount, MaxPremiumAmount, Category, MaturityRate):
         self.Id = Id
         self.InsuranceType = InsuranceType
-        self.PolicyTerm = PolicyTerm
+        self.InsuranceAmount = InsuranceAmount
+        self.MinPolicyTerm = MinPolicyTerm
+        self.MaxPolicyTerm = MaxPolicyTerm
+        self.PayingTerm = PayingTerm
         self.MinAgeEntry = MinAgeEntry
         self.MaxAgeEntry = MaxAgeEntry
         self.MinAgeMaturity = MinAgeMaturity
@@ -296,6 +315,7 @@ class Insurance(db.Model):
         self.MinPremiumAmount = MinPremiumAmount
         self.MaxPremiumAmount = MaxPremiumAmount
         self.Category = Category
+        self.MaturityRate = MaturityRate
 
     def __repr__(self):
         return '<Insurance %r>' % self.Id

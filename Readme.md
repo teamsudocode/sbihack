@@ -11,4 +11,8 @@
 4. ```cd quant/```
 5. python3 ```__init__.py```
 
+Your site is live at http://localhost:5000/
+For customer part: http://localhost:5000/customer/dashboard
+For bank part: http://localhost:5000/bank/dashboard
+
 There you go !!

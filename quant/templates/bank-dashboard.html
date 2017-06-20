@@ -8,6 +8,38 @@
         <h1>Live Hits:</h1>
         <div id="livdiv">
             <canvas id="live"></canvas>
+            <script>
+            // javascript for canvas 
+            var ctx2 = document.getElementById('live').getContext('2d');
+            var myChart2 = new Chart(ctx2,{
+                type: 'line',
+                data: {
+                    labels: ["1:15PM","1:30PM","1.45PM", "2.00PM", "2.15PM"],
+                    datasets: [{
+                        data: [100,200,300,50,230],
+                        backgroundColor: [
+                            'rgba(0, 168, 226, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(0, 168, 226,1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    },
+                    responsive: true, maintainAspectRatio: false,legend:{
+                        display:false
+                    }
+                }
+            });
+            </script>
         </div>
         <div id="liv">
             <div id="online"><h1>Number of users online</h1>
@@ -26,6 +58,5 @@
 <link rel="stylesheet" href={{ url_for("static", filename="index.css") }}>
 <link rel="stylesheet" href={{ url_for("static", filename="bank.css") }}>
 <script src={{ url_for("static", filename="Chart.min.js") }}></script>
-<script src={{ url_for("static", filename="bank.js") }}></script>
 
 {% endblock %}

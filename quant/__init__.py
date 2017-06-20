@@ -35,8 +35,8 @@ def customer_dashboard():
                                     .all()
     labels = [trans.timestamp.strftime("%d %B") for trans in transactions]
     dataset = [trans.amount for trans in transactions]
-    print(labels)
-    return render_template("dashboard.html", labels=labels, dataset=dataset)
+    top_reviews = Review.query.order_by(sqlalchemy.desc(Review.rating)).limit(5).all()
+    return render_template("dashboard.html", labels=labels, dataset=dataset, top_reviews=top_reviews)
 
 
 @app.route("/customer/loans")
@@ -79,12 +79,15 @@ def bank_dashboard():
 
 @app.route("/bank/trends")
 def bank_trends():
-    return render_template("bank-trends.html")
+    top_rated = Review.query.order_by(sqlalchemy.desc(Review.rating)).limit(5).all()
+    least_rated = Review.query.order_by(sqlalchemy.asc(Review.rating)).limit(5).all()
+    return render_template("bank-trends.html", top_rated=top_rated, least_rated=least_rated)
 
 
 @app.route("/bank/support")
 def bank_support():
-    return render_template("bank-support.html")
+    issues = Issue.query.filter_by(status="open").all()
+    return render_template("bank-support.html", issues=issues)
 
 
 @app.route("/product/<id>")
@@ -181,6 +184,4 @@ def not_found(error):
 
 
 if __name__ == "__main__":
-    db.session.commit()
-    print(Transaction.query.all())
     app.run(debug=True)

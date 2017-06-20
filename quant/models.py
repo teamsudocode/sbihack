@@ -5,6 +5,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_sqlalchemy import sqlalchemy
 from datetime import datetime
+from enum import Enum
 
 ForeignKey = sqlalchemy.ForeignKey
 relationship = sqlalchemy.orm.relationship
@@ -52,13 +53,19 @@ class User(db.Model):
             self.id, self.name, self.cif, self.created_at)
 
 
+class ProductEnum(Enum):
+    homeloan = 1
+    eduloan = 2
+    deposit_1 = 3
+
+
 class Product(db.Model):
     """collection of all users"""
     __tablename__ = "product"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(50), nullable=False)
-    category = db.Column(db.String(20), nullable=False)
+    category = db.Column(db.Integer, nullable=False)
 
     def __init__(self, name, category):
         self.name = name
@@ -68,14 +75,26 @@ class Product(db.Model):
         return "<Product id='%s', name='%s', category='%s'>" % (
             self.id, self.name, self.category)
 
+    @property
+    def product_details:
+        if self.category == ProductEnum.homeloan.value:
+            return "query from homeloan table"
+        elif self.category == ProductEnum.eduloan.value:
+            return "query from eduloan table"
+        elif self.category == ProductEnum.deposit_1.value:
+            return "query from deposits available"
+
 
 class Review(db.Model):
     """collection of all users"""
+    __tablename__ = "review"
+
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     created_at = db.Column(db.DateTime, default=datetime.now())
     userid = db.Column(db.Integer, db.ForeignKey('user.id'))
     productid = db.Column(db.Integer, db.ForeignKey('product.id'))
     rating = db.Column(db.String(2), nullable=False)
+    title = db.Column(db.String(100), nullable=False)
     comment = db.Column(db.String(500))
 
     user = relationship("User")
@@ -85,18 +104,23 @@ class Review(db.Model):
         sqlalchemy.UniqueConstraint("userid", "productid", name="unique_review"),
     )
 
-    def __init__(self, userid, productid, rating, comment):
+    def __init__(self, userid, productid, rating, title, comment):
         rating_float = float(rating)
         if not(rating_float >= 0 and rating_float <= 5):
             raise ValueError
         self.userid = userid
         self.productid = productid
+        self.title = title
         self.rating = str(rating)
         self.comment = comment
 
     def __repr__(self):
         return "<Review id='%s', userid='%s', productid='%s', rating='%s', created_at='%s', user='%s', product='%s'>" % (
             self.id, self.userid, self.productid, self.rating, self.comment, self.user, self.product)
+
+
+# class Feedback(db.Model):
+#     """ This also serves as review, but it is for the right dashboard, recommendations"""
 
 
 class Issue(db.Model):
@@ -169,6 +193,13 @@ class Account(db.Model):
         return datetime.strptime(self.MaturityDate, "%Y%m%d")
 
 
+# class Transaction(db.Model):
+    # """ All transactions """
+    # amount = db.Column(db.Integer, nullable=False)
+    # timestamp = db.Column(db.DateTime, default=datetime.now())
+    # accountNumber = db.Column(db.Integer, db.ForeignKey("Account. ff``"))
+
+
 if __name__ == "__main__":
     """For testing purposes
     Use the same code for the main app
@@ -204,7 +235,10 @@ if __name__ == "__main__":
     db.session.commit()
     issue = Issue(reviewid=2)
     db.session.add(issue)
-    print('issue created', Issue.query.filter_by(id=1).first())
+    db.session.add(Issue(reviewid=3))
+    db.session.add(Issue(reviewid=4))
+    db.session.add(Issue(reviewid=5))
+    print('issue created', Issue.query.all())
     # re = Review(userid=1, productid=2, rating="0.6", comment="haha not good")
     # if above review exists
     # otherwise you'd get sqlalchemy.exc.IntegrityError, so try---catch

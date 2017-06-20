@@ -76,6 +76,15 @@ class Product(db.Model):
             self.id, self.name, self.category)
 
     @property
+    def product_category(self):
+        if self.category == ProductEnum.homeloan.value:
+            return "Home Loan"
+        elif self.category == ProductEnum.eduloan.value:
+            return "Education Loan"
+        elif self.category == ProductEnum.deposit_1.value:
+            return "Deposit Scheme"
+
+    @property
     def product_details(self):
         if self.category == ProductEnum.homeloan.value:
             return "query from homeloan table"

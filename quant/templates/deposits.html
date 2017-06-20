@@ -1,135 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "customer_base.html" %}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Quant: On the go financial advise.</title>
-</head>
+{% block main_content %}
 
-<body>
-    <!--HEADER-->
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12" id="navbar"><a id="logo-link" href="dashboard.html">Quant</a><button id="signin" class="quant-btn">Sign In</button></div>
+<!--loans results-->
+<div class="col-sm-6" id="loans">
+    <h2>Showing 1-25 of the total 1625 deposits schemes</h2>
+    <div id="product-list">
+        <div class="product-card">
+            <label>Fixed Deposit</label>
+            <h1>Double your money in 30 years</h1>
+            <h2>Rate of Interest: 15%</h2>
+            <h2>Minimum Deposit: ₹4500/month</h2>
+            <div id="ratings">
+                <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span></div>
+            </div>
+            <div id="customers">
+                <i class="material-icons">people_outline</i>Recommended by 213 users</div>
+            <button id="view">View Details</button>
         </div>
-        <!--SIDENAV-->
-        <div class="row">
-
-            <div class="col-sm-2" id="sidenavmaster">
-                <div id="sidenav">
-                    <div class="option"><img src="icons/dashboard-inactive.png">
-                        <p>Dashboard</p>
-                    </div>
-                    <div class="option"><img src="icons/loan-inactive.png">
-                        <p>Loans</p>
-                    </div>
-                    <div class="option active"><img src="icons/deposit-selected.png">
-                        <p>Deposits</p>
-                    </div>
-                    <div class="option"><img src="icons/insurance-inactive.png">
-                        <p>Insurance</p>
-                    </div>
-                    <div class="option"><img src="icons/support-inactive.png">
-                        <p>Support</p>
-                    </div>
-                </div>
+        <div class="product-card">
+            <label>Fixed Deposit</label>
+            <h1>Double your money in 30 years</h1>
+            <h2>Rate of Interest: 15%</h2>
+            <h2>Minimum Deposit: ₹4500/month</h2>
+            <div id="ratings">
+                <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span></div>
             </div>
-            <!--loans results-->
-            <div class="col-sm-6" id="loans">
-                <h2>Showing 1-25 of the total 1625 deposits schemes</h2>
-                <div id="product-list">
-                    <div class="product-card">
-                        <label>Fixed Deposit</label>
-                        <h1>Double your money in 30 years</h1>
-                        <h2>Rate of Interest: 15%</h2>
-                        <h2>Minimum Deposit: ₹4500/month</h2>
-                        <div id="ratings">
-                            <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span></div>
-                        </div>
-                        <div id="customers">
-                            <i class="material-icons">people_outline</i>Recommended by 213 users</div>
-                        <button id="view">View Details</button>
-                    </div>
-                    <div class="product-card">
-                        <label>Fixed Deposit</label>
-                        <h1>Double your money in 30 years</h1>
-                        <h2>Rate of Interest: 15%</h2>
-                        <h2>Minimum Deposit: ₹4500/month</h2>
-                        <div id="ratings">
-                            <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span></div>
-                        </div>
-                        <div id="customers">
-                            <i class="material-icons">people_outline</i>Recommended by 213 users</div>
-                        <button id="view">View Details</button>
-                    </div>
-                    <div class="product-card">
-                        <label>Fixed Deposit</label>
-                        <h1>Double your money in 30 years</h1>
-                        <h2>Rate of Interest: 15%</h2>
-                        <h2>Minimum Deposit: ₹4500/month</h2>
-                        <div id="ratings">
-                            <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span></div>
-                        </div>
-                        <div id="customers">
-                            <i class="material-icons">people_outline</i>Recommended by 213 users</div>
-                        <button id="view">View Details</button>
-                    </div>
-                    <div class="product-card">
-                        <label>Fixed Deposit</label>
-                        <h1>Double your money in 30 years</h1>
-                        <h2>Rate of Interest: 15%</h2>
-                        <h2>Minimum Deposit: ₹4500/month</h2>
-                        <div id="ratings">
-                            <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span></div>
-                        </div>
-                        <div id="customers">
-                            <i class="material-icons">people_outline</i>Recommended by 213 users</div>
-                        <button id="view">View Details</button>
-                    </div>
-                    
-                </div>
-            </div>
-
-
-            <!--SEARCH-->
-            <div class="col-sm-4" id="searchbox">
-
-                <form id="schemesearch">
-                    <p>Search for deposits</p>
-                    <div id="row2">
-                        <label for="type-loan">Select the type of deposits</label>
-                        <br>
-                        <select name="type-loan" id="box1">
-                        <option>Fixed Deposit</option>
-                        <option>Time Deposit</option>
-                        <option>Demand Deposit</option>
-                    </select>
-
-                        <br><br>
-                        <label for="salary">Your Monthly Salary</label><br>
-                        <input type="text" placeholder="Monthly salary in INR" name="salary" id="box2">
-                        <br><br>
-                        <label for="emi">Desirable Rate of interest<span>  (Optional)</span></label>
-                        <input type="text" placeholder="Minimum ROI" name="emi" id="box3">
-                        <br><br>
-                        <label for="tenure">Tenure<span> (Optional)</span></label><br>
-                        <input type="number" placeholder="Duration of deposit" name="tenure" id="box4" min=0>
-                        <br>
-                    </div>
-                    <div id="row3">
-                        <button type="submit">Search schemes</button> <br><a href="#">Which type of deposit should I select?</a>
-                    </div>
-                </form>
-            </div>
-
-
+            <div id="customers">
+                <i class="material-icons">people_outline</i>Recommended by 213 users</div>
+            <button id="view">View Details</button>
         </div>
+        <div class="product-card">
+            <label>Fixed Deposit</label>
+            <h1>Double your money in 30 years</h1>
+            <h2>Rate of Interest: 15%</h2>
+            <h2>Minimum Deposit: ₹4500/month</h2>
+            <div id="ratings">
+                <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span></div>
+            </div>
+            <div id="customers">
+                <i class="material-icons">people_outline</i>Recommended by 213 users</div>
+            <button id="view">View Details</button>
+        </div>
+        <div class="product-card">
+            <label>Fixed Deposit</label>
+            <h1>Double your money in 30 years</h1>
+            <h2>Rate of Interest: 15%</h2>
+            <h2>Minimum Deposit: ₹4500/month</h2>
+            <div id="ratings">
+                <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span></div>
+            </div>
+            <div id="customers">
+                <i class="material-icons">people_outline</i>Recommended by 213 users</div>
+            <button id="view">View Details</button>
+        </div>
+        
     </div>
-</body>
+</div>
 
-</html>
-<link rel="stylesheet" href="bootstrap.min.css">
-<link rel="stylesheet" href="index.css">
-<link rel="stylesheet" href="loans.css">
+{% endblock %}
+
+{% block right_column %}
+
+<!--SEARCH-->
+<div class="col-sm-4" id="searchbox">
+
+    <form id="schemesearch">
+        <p>Search for deposits</p>
+        <div id="row2">
+            <label for="type-loan">Select the type of deposits</label>
+            <br>
+            <select name="type-loan" id="box1">
+            <option>Fixed Deposit</option>
+            <option>Time Deposit</option>
+            <option>Demand Deposit</option>
+        </select>
+
+            <br><br>
+            <label for="salary">Your Monthly Salary</label><br>
+            <input type="text" placeholder="Monthly salary in INR" name="salary" id="box2">
+            <br><br>
+            <label for="emi">Desirable Rate of interest<span>  (Optional)</span></label>
+            <input type="text" placeholder="Minimum ROI" name="emi" id="box3">
+            <br><br>
+            <label for="tenure">Tenure<span> (Optional)</span></label><br>
+            <input type="number" placeholder="Duration of deposit" name="tenure" id="box4" min=0>
+            <br>
+        </div>
+        <div id="row3">
+            <button type="submit">Search schemes</button> <br><a href="#">Which type of deposit should I select?</a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block static_files %}
+<link rel="stylesheet" href={{ url_for("static", filename="bootstrap.min.css") }}>
+<link rel="stylesheet" href={{ url_for("static", filename="index.css") }}>
+<link rel="stylesheet" href={{ url_for("static", filename="loans.css") }}>
+{% endblock %}

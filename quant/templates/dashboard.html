@@ -1,126 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'customer_base.html' %}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Quant: On the go financial advise.</title>
-</head>
-
-<body>
-    <!--HEADER-->
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12" id="navbar"><a id="logo-link" href="dashboard.html">Quant</a><button id="signin" class="quant-btn">Sign In</button></div>
-        </div>
-        <!--SIDENAV-->
-        <div class="row">
-            <div class="col-sm-2" id="sidenavmaster">
-                <div id="sidenav">
-                    <div class="option active"><img src="icons/dashboard-selected.png">
-                        <p>Dashboard</p>
-                    </div>
-                    <div class="option"><img src="icons/loan-inactive.png">
-                        <p>Loans</p>
-                    </div>
-                    <div class="option"><img src="icons/deposit-inactive.png">
-                        <p>Deposits</p>
-                    </div>
-                    <div class="option"><img src="icons/insurance-inactive.png">
-                        <p>Insurance</p>
-                    </div>
-                    <div class="option"><img src="icons/support-inactive.png">
-                        <p>Support</p>
-                    </div>
-                </div>
-            </div>
-            <!--SEARCH-->
-            <div class="col-sm-7" id="searchbox">
-                <form id="schemesearch">
-                    <div id="row1" >
-                        <p>Find the best schemes</p>
-                        <input type="radio" value="loans" name="scheme" checked> <label>Loans</label>
-                        <input type="radio" value="deposits" name="scheme"> <label>Deposits</label>
-                        <input type="radio" value="insurance" name="scheme"> <label>Insurance</label>
-                        <input type="radio" value="retirement" name="scheme"><label> Post-Retirement</label>
-                    </div>
-                    <div id="row2">
-                        <label for="type-loan">Select the type of loan</label>
-                        <select name="type-loan" id="bx1">
-                        <option>Education Loan</option>
-                        <option>Car Loan</option>
-                        <option>Home Loan</option>
-                        <option>Gold Loan</option>
-                    </select>
-                        <br>
-                        <label for="salary">Your Monthly Salary</label>
-                        <input type="text" placeholder="Monthly salary in INR" name="salary" id="bx2">
-                        <br>
-                        <label for="emi">Maximum EMI Amount<span>  (Optional)</span></label>
-                        <input type="text" placeholder="EMI per month in INR" name="emi" id="bx3">
-                        <br>
-                        <label for="tenure">Tenure<span> (Optional)</span></label>
-                        <input type="number" placeholder="Duration of loan" name="tenure" id="bx4" min=0>
-                        <br>
-                    </div>
-                    <div id="row3">
-                        <button type="submit">Search schemes</button> <a href="#">Which type of loan should I select?</a>
-                    </div>
-                </form>
-            </div>
-            <div class="col-sm-3" id="trendingmaster">
-                <div id="trending">
-                    <p>Trending Schemes</p>
-                    <div class="schemecard">
-                        <a id="name">₹ 20 Lac at ₹4500/month</a>
-                        <p id="sub">
-                            <span>Home Loan</span>
-                            <span>5.5%</span>
-                            <span>10 years</span>
-                        </p>
-                        <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><i class="material-icons ngiven">star_border</i><span>456 customers</span></div>
-                    </div>
-                    <div class="schemecard">
-                        <a id="name">₹ 20 Lac at ₹4500/month</a>
-                        <p id="sub">
-                            <span>Home Loan</span>
-                            <span>5.5%</span>
-                            <span>10 years</span>
-                        </p>
-                        <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><i class="material-icons ngiven">star_border</i><span>456 customers</span></div>
-                    </div>
-                    <div class="schemecard">
-                        <a id="name">₹ 20 Lac at ₹4500/month</a>
-                        <p id="sub">
-                            <span>Home Loan</span>
-                            <span>5.5%</span>
-                            <span>10 years</span>
-                        </p>
-                        <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><i class="material-icons ngiven">star_border</i><span>456 customers</span></div>
-                    </div>
-                    <div class="schemecard">
-                        <a id="name">₹ 20 Lac at ₹4500/month</a>
-                        <p id="sub">
-                            <span>Home Loan</span>
-                            <span>5.5%</span>
-                            <span>10 years</span>
-                        </p>
-                        <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><i class="material-icons ngiven">star_border</i><span>456 customers</span></div>
-                    </div>
-                    
-                    <div class="schemecard">
-                        <a href="#" id="more">View more</a>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
+{% block main_content %}
+<!--SEARCH-->
+<div class="col-sm-7" id="userstats">
+    <h2>Your Month in a review<button>2 pending EMIs </button></h2>
+    <div id="expensediv">
+        <canvas id="expenses"></canvas>
     </div>
-</body>
+    <div>
+        <div id="credit"><p>Amount Credited: ₹3487</p></div>
+        <div id="debit">Amount Debited: ₹4567</div>
+    </div>
+    <button class="quant-btn">Download mini-statement</button>
+</div>
+{% endblock %}
 
-</html>
-<link rel="stylesheet" href="bootstrap.min.css">
-<link rel="stylesheet" href="index.css">
-<script src="app.js">
-</script>
+{% block right_column %}
+
+<div class="col-sm-3" id="trendingmaster">
+    <div id="trending">
+        <p>Recommended schemes</p>
+        <div class="schemecard">
+            <a id="name">₹ 20 Lac at ₹4500/month</a>
+            <p id="sub">
+                <span>Home Loan</span>
+                <span>5.5%</span>
+                <span>10 years</span>
+            </p>
+            <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><i class="material-icons ngiven">star_border</i><span>456 customers</span></div>
+        </div>
+        <div class="schemecard">
+            <a id="name">₹ 20 Lac at ₹4500/month</a>
+            <p id="sub">
+                <span>Home Loan</span>
+                <span>5.5%</span>
+                <span>10 years</span>
+            </p>
+            <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><i class="material-icons ngiven">star_border</i><span>456 customers</span></div>
+        </div>
+        <div class="schemecard">
+            <a id="name">₹ 20 Lac at ₹4500/month</a>
+            <p id="sub">
+                <span>Home Loan</span>
+                <span>5.5%</span>
+                <span>10 years</span>
+            </p>
+            <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><i class="material-icons ngiven">star_border</i><span>456 customers</span></div>
+        </div>
+        <div class="schemecard">
+            <a id="name">₹ 20 Lac at ₹4500/month</a>
+            <p id="sub">
+                <span>Home Loan</span>
+                <span>5.5%</span>
+                <span>10 years</span>
+            </p>
+            <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><i class="material-icons ngiven">star_border</i><span>456 customers</span></div>
+        </div>
+
+        <div class="schemecard">
+            <a href="#" id="more">View more</a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block static_files %}
+<link rel="stylesheet" href={{ url_for('static', filename="bootstrap.min.css") }}>
+<link rel="stylesheet" href={{ url_for('static', filename="index.css") }} >
+<script src={{ url_for("static", filename="Chart.min.js") }}></script>
+<script src={{ url_for("static", filename="app.js") }}></script>
+{% endblock %}

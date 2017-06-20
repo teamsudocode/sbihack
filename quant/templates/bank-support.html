@@ -1,71 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "bank_base.html" %}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Quant: On the go financial advise.</title>
-</head>
+{% block main_content %}
 
-<body>
-    <!--HEADER-->
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12" id="navbar"><a id="logo-link" href="dashboard.html">Quant</a>
-            </div>
-        </div>
-        <!--SIDENAV-->
-        <div class="row">
-
-            <div class="col-sm-2" id="sidenavmaster">
-                <div id="sidenav">
-                    <div class="option"><img src="icons/dashboard-inactive.png">
-                        <p>Dashboard</p>
-                    </div>
-                    <div class="option"><img src="icons/trends-inactive.png">
-                        <p>Trends</p>
-                    </div>
-                    <div class="option active"><img src="icons/support-selected.png">
-                        <p>Support</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-10" id="issues">
-                <h1>32 open reviews</h1>
-                <div class="issue">
-                    <a>Insurance money not creditted</a>
-                    <span>lifetime insurance</span>
-                    <p>My insurance money has not been credited to my account. I have been trying since 4 months. I paid EMIs for 20 years, and now you're not giving money. What is this?</p>
-                    <button>Mark as solved</button>
-                </div>
-                <hr>
-                <div class="issue">
-                    <a>Insurance money not creditted</a>
-                    <span>lifetime insurance</span>
-                    <p>My insurance money has not been credited to my account. I have been trying since 4 months. I paid EMIs for 20 years, and now you're not giving money. What is this?</p>
-                    <button>Mark as solved</button>
-                </div><hr>
-                <div class="issue">
-                    <a>Insurance money not creditted</a>
-                    <span>lifetime insurance</span>
-                    <p>My insurance money has not been credited to my account. I have been trying since 4 months. I paid EMIs for 20 years, and now you're not giving money. What is this?</p>
-                    <button>Mark as solved</button>
-                </div><hr>
-                <div class="issue">
-                    <a>Insurance money not creditted</a>
-                    <span>lifetime insurance</span>
-                    <p>My insurance money has not been credited to my account. I have been trying since 4 months. I paid EMIs for 20 years, and now you're not giving money. What is this?</p>
-                    <button>Mark as solved</button>
-                </div><hr>
-            </div>
-        </div>
-        <!--loans results-->
+<div class="col-sm-10" id="issues">
+    <h1>32 open reviews</h1>
+    <div class="issue">
+        <a>Insurance money not creditted</a>
+        <span>lifetime insurance</span>
+        <p>My insurance money has not been credited to my account. I have been trying since 4 months. I paid EMIs for 20 years, and now you're not giving money. What is this?</p>
+        <button>Mark as solved</button>
     </div>
-</body>
+    <hr>
+    <div class="issue">
+        <a>Insurance money not creditted</a>
+        <span>lifetime insurance</span>
+        <p>My insurance money has not been credited to my account. I have been trying since 4 months. I paid EMIs for 20 years, and now you're not giving money. What is this?</p>
+        <button>Mark as solved</button>
+    </div><hr>
+    <div class="issue">
+        <a>Insurance money not creditted</a>
+        <span>lifetime insurance</span>
+        <p>My insurance money has not been credited to my account. I have been trying since 4 months. I paid EMIs for 20 years, and now you're not giving money. What is this?</p>
+        <button>Mark as solved</button>
+    </div><hr>
+    <div class="issue">
+        <a>Insurance money not creditted</a>
+        <span>lifetime insurance</span>
+        <p>My insurance money has not been credited to my account. I have been trying since 4 months. I paid EMIs for 20 years, and now you're not giving money. What is this?</p>
+        <button>Mark as solved</button>
+    </div><hr>
+</div>
 
-</html>
-<link rel="stylesheet" href="bootstrap.min.css">
+{% endblock %}
 
-<link rel="stylesheet" href="index.css">
-<link rel="stylesheet" href="support.css">
+{% block static_files %}
+<link rel="stylesheet" href={{ url_for("static", filename="bootstrap.min.css") }}>
+<link rel="stylesheet" href={{ url_for("static", filename="index.css") }}>
+<link rel="stylesheet" href={{ url_for("static", filename="support.css") }}>
+{% endblock %}

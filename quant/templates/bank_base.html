@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Quant: On the go financial advise.</title>
+</head>
+
+<body>
+    <!--HEADER-->
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12" id="navbar"><a id="logo-link" href="/bank">Quant</a>
+            </div>
+        </div>
+        <!--SIDENAV-->
+        <div class="row">
+
+            <div class="col-sm-2" id="sidenavmaster">
+                <div id="sidenav">
+                    <a href="/bank">
+                        <div class="option"><img src={{ url_for("static", filename="icons/dashboard-inactive.png") }}>
+                            <p>Dashboard</p>
+                        </div>
+                    </a>
+                    <a href="/bank/trends">
+                        <div class="option"><img src={{ url_for("static", filename="icons/trends-inactive.png") }}>
+                            <p>Trends</p>
+                        </div>
+                    </a>
+                    <a href="/bank/support">
+                        <div class="option"><img src={{ url_for("static", filename="icons/support-inactive.png") }}>
+                            <p>Support</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <script>
+                window.onload = () => {
+                    var sidenav_items = document.getElementById("sidenav").children;
+                    for (let i = 0; i < sidenav_items.length; i++) {
+                        if (sidenav_items[i].href == window.location.href) {
+                            // this should be set active and icon changed
+                            sidenav_items[i].children[0].className += " active";
+                            let img_elem = sidenav_items[i].getElementsByTagName("img")[0];
+                            img_elem.src = img_elem.src.replace("inactive", "selected");
+                        }
+                    }
+                }
+            </script>
+            
+            {% block main_content %}{% endblock %}
+
+        </div>
+    </div>
+</body>
+
+</html>
+
+{% block static_files %} {% endblock %}

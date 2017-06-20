@@ -12,26 +12,39 @@
     <!--HEADER-->
     <div class="container">
         <div class="row">
-            <div class="col-sm-12" id="navbar"><a id="logo-link" href="dashboard.html">Quant</a><button id="signin" class="quant-btn">Sign In</button></div>
+            <div class="col-sm-12" id="navbar"><a id="logo-link" href="/customer">Quant</a><button id="signin" class="quant-btn">Sign In</button></div>
         </div>
         <!--SIDENAV-->
         <div class="row">
             <div class="col-sm-2" id="sidenavmaster">
                 <div id="sidenav">
-                    <div class="option"><img src="icons/dashboard-inactive.png">
-                        <p>Dashboard</p>
-                    </div>
-                    <div class="option active"><img src="icons/loan-selected.png">
-                        <p>Loans</p>
-                    </div>
-                    <div class="option"><img src="icons/deposit-inactive.png">
-                        <p>Deposits</p>
-                    </div>
-                    <div class="option"><img src="icons/insurance-inactive.png">
-                        <p>Insurance</p>
-                    </div>
-                    <div class="option"><img src="icons/support-inactive.png">
-                        <p>Support</p>
+                    <a href="/customer/dashboard">
+                        <div class="option"><img src={{ url_for("static", filename="icons/dashboard-inactive.png") }}>
+                            <p>Dashboard</p>
+                        </div>
+                    </a>
+                    <a href="/customer/loans">
+                        <div class="option"><img src={{ url_for("static", filename="icons/loan-inactive.png") }}>
+                            <p>Loans</p>
+                        </div>
+                    </a>
+                    <a href="/customer/deposits">
+                        <div class="option"><img src={{ url_for("static", filename="icons/deposit-inactive.png") }}>
+                            <p>Deposits</p>
+                        </div>
+                    </a>
+                    <a href="/customer/insurance">
+                        <div class="option"><img src={{ url_for("static", filename="icons/insurance-inactive.png") }}>
+                            <p>Insurance</p>
+                        </div>
+                    </a>
+                    <a href="/customer/support">
+                        <div class="option"><img src={{ url_for("static", filename="icons/support-inactive.png") }}>
+                            <p>Support</p>
+                        </div>
+                    </a>
+                    <div class="option">
+                        <p>Log out</p>
                     </div>
                 </div>
             </div>
@@ -51,7 +64,7 @@
                 <h1>Reviews and comments</h1>
                 <div id="commentbox">
                     <div class="commentcard">
-                        <div id="dp"><img src="icons/user.png">
+                        <div id="dp"><img src={{ url_for("static", filename="icons/user.png") }}>
                             <p>Souvik Sen</p>
                         </div>
                         <div id="comment">
@@ -61,7 +74,7 @@
                     </div>
                 </div>
                 <div class="commentcard">
-                    <div id="dp"><img src="icons/user.png">
+                    <div id="dp"><img src={{ url_for("static", filename="icons/user.png") }}>
                         <p>Priyanshu Kumar</p>
                     </div>
                     <div id="comment">
@@ -98,9 +111,9 @@
 
 
 </html>
-<link rel="stylesheet" href="bootstrap.min.css">
-<link rel="stylesheet" href="index.css">
-<link rel="stylesheet" href="product.css">
+<link rel="stylesheet" href={{ url_for("static", filename="bootstrap.min.css") }}>
+<link rel="stylesheet" href={{ url_for("static", filename="index.css") }}>
+<link rel="stylesheet" href={{ url_for("static", filename="product.css") }}>
 
 
 </script>

@@ -102,7 +102,7 @@ class Review(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.now())
     userid = db.Column(db.Integer, db.ForeignKey('user.id'))
     productid = db.Column(db.Integer, db.ForeignKey('product.id'))
-    rating = db.Column(db.String(2), nullable=False)
+    rating = db.Column(db.Integer, nullable=False)
     title = db.Column(db.String(100), nullable=False)
     comment = db.Column(db.String(500))
 

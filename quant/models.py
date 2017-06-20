@@ -267,6 +267,39 @@ class EduLoan(db.Model):
     def __repr__(self):
         return '<Eduloan %r>' % self.Id
 
+class Insurance(db.Model):
+    __tablename__ = "insurance"
+
+    Id = db.Column(db.Integer, primary_key=True)
+    InsuranceType = db.Column(db.String(80))
+    PolicyTerm = db.Column(db.Float)
+    PayingTerm = db.Column(db.Float)
+    MinAgeEntry = db.Column(db.Integer)
+    MaxAgeEntry = db.Column(db.Integer)
+    MinAgeMaturity = db.Column(db.Integer)
+    MaxAgeMaturity = db.Column(db.Integer)
+    PremiumFreq = db.Column(db.String(20))
+    MinPremiumAmount = db.Column(db.Integer)
+    MaxPremiumAmount = db.Column(db.String(20))
+    Category = db.Column(db.String(80))
+
+    def __init__(self, Id, InsuranceType, PolicyTerm, PayingTerm, MinAgeEntry, MaxAgeEntry, MinAgeMaturity,
+                    MaxAgeMaturity, PremiumFreq, MinPremiumAmount, MaxPremiumAmount, Category):
+        self.Id = Id
+        self.InsuranceType = InsuranceType
+        self.PolicyTerm = PolicyTerm
+        self.MinAgeEntry = MinAgeEntry
+        self.MaxAgeEntry = MaxAgeEntry
+        self.MinAgeMaturity = MinAgeMaturity
+        self.MaxAgeMaturity = MaxAgeMaturity
+        self.PremiumFreq = PremiumFreq
+        self.MinPremiumAmount = MinPremiumAmount
+        self.MaxPremiumAmount = MaxPremiumAmount
+        self.Category = Category
+
+    def __repr__(self):
+        return '<Insurance %r>' % self.Id
+
 
 class Transaction(db.Model):
     """ All transactions, required for mini-statement """

@@ -309,3 +309,7 @@ class Transaction(db.Model):
     timestamp = db.Column(db.DateTime, default=datetime.now())
     amount = db.Column(db.Integer, nullable=False)
     accountNumber = db.Column(db.String(20), db.ForeignKey("account.account_number"))
+
+    def __repr__(self):
+        return "<Transaction timestamp='%s' amount='%s' accountNumber='%s' >" % (
+            self.timestamp, self.amount, self.accountNumber)

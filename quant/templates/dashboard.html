@@ -6,6 +6,39 @@
     <h2>Your Month in a review<button>2 pending EMIs </button></h2>
     <div id="expensediv">
         <canvas id="expenses"></canvas>
+        <script>
+        window.onload = () => {
+            var ctx = document.getElementById("expenses").getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: {{ labels|tojson }},
+                    datasets: [{
+                        data: {{ dataset|tojson }},
+                        backgroundColor: [
+                            'rgba(0, 168, 226, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(0, 168, 226,1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    },
+                    responsive: true, maintainAspectRatio: false,legend:{
+                        display:false
+                    }
+                }
+            });
+        }
+        </script>
     </div>
     <div>
         <div id="credit"><p>Amount Credited: ₹3487</p></div>
@@ -29,33 +62,25 @@
             </p>
             <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><i class="material-icons ngiven">star_border</i><span>456 customers</span></div>
         </div>
+        
+        {% for rev in top_reviews %}
         <div class="schemecard">
-            <a id="name">₹ 20 Lac at ₹4500/month</a>
+            <a href="/product/{{ rev.product.id }}" id="name">{{ rev.product.name }}</a>
             <p id="sub">
-                <span>Home Loan</span>
-                <span>5.5%</span>
-                <span>10 years</span>
+                <span>{{rev.product.product_category}}</span>
+                <span>{{rev.product.product}}</span>
+                <span>Duration</span>
             </p>
-            <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><i class="material-icons ngiven">star_border</i><span>456 customers</span></div>
+            <div id="stars">
+                {% for i in range(rev.stars) %}
+                    <i class="material-icons given">star_border</i>
+                {% endfor %}
+                {% for i in range(5 - rev.stars) %}
+                    <i class="material-icons ngiven">star_border</i>
+                {% endfor %}
+            </div>
         </div>
-        <div class="schemecard">
-            <a id="name">₹ 20 Lac at ₹4500/month</a>
-            <p id="sub">
-                <span>Home Loan</span>
-                <span>5.5%</span>
-                <span>10 years</span>
-            </p>
-            <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><i class="material-icons ngiven">star_border</i><span>456 customers</span></div>
-        </div>
-        <div class="schemecard">
-            <a id="name">₹ 20 Lac at ₹4500/month</a>
-            <p id="sub">
-                <span>Home Loan</span>
-                <span>5.5%</span>
-                <span>10 years</span>
-            </p>
-            <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><i class="material-icons ngiven">star_border</i><span>456 customers</span></div>
-        </div>
+        {% endfor %}
 
         <div class="schemecard">
             <a href="#" id="more">View more</a>
@@ -70,5 +95,4 @@
 <link rel="stylesheet" href={{ url_for('static', filename="bootstrap.min.css") }}>
 <link rel="stylesheet" href={{ url_for('static', filename="index.css") }} >
 <script src={{ url_for("static", filename="Chart.min.js") }}></script>
-<script src={{ url_for("static", filename="app.js") }}></script>
 {% endblock %}

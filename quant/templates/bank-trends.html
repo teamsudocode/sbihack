@@ -12,38 +12,24 @@
                 <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span></div>
             </div>
         </div>
+        {% for rev in top_rated %}
         <div class="trend-list">
-            <a href="#">₹14 Lac at  ₹3000/month</a>
+            <a href="/product/{{ rev.product.id }}" id="name">{{ rev.product.name }}</a>
             <br>
-            <button>Home Loan</button>
+            <button>{{ rev.product.product_category }}</button>
             <div id="ratings">
-                <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span></div>
+                <div id="stars">
+                {% for i in range(rev.stars) %}
+                    <i class="material-icons given">star_border</i>
+                {% endfor %}
+                {% for i in range(5 - rev.stars) %}
+                    <i class="material-icons ngiven">star_border</i>
+                {% endfor %}
+                <span>{{ rev.rating }}/5</span>
+                </div>
             </div>
         </div>
-        <div class="trend-list">
-            <a href="#">₹14 Lac at  ₹3000/month</a>
-            <br>
-            <button>Home Loan</button>
-            <div id="ratings">
-                <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span></div>
-            </div>
-        </div>
-        <div class="trend-list">
-            <a href="#">₹14 Lac at  ₹3000/month</a>
-            <br>
-            <button>Home Loan</button>
-            <div id="ratings">
-                <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span></div>
-            </div>
-        </div>
-        <div class="trend-list">
-            <a href="#">₹14 Lac at  ₹3000/month</a>
-            <br>
-            <button>Home Loan</button>
-            <div id="ratings">
-                <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span></div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 
 </div>
@@ -70,31 +56,26 @@
 
 <div class="col-sm-6" id="debate">
     <h1><img src={{ url_for("static", filename="icons/loss.png") }}>Least Rated Schemes</h1>
+    
+    {% for rev in least_rated %}
     <div class="trend-list">
-        <a href="#">₹9 Lac at  ₹30000/month</a>
+        <a href="/product/{{ rev.product.id }}" id="name">{{ rev.product.name }}</a>
         <br>
-        <button>Home Loan</button>
+        <button>{{ rev.product.product_category }}</button>
         <div id="ratings">
-            <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><i class="material-icons ngiven">star_border</i><i class="material-icons ngiven">star_border</i><span>2.0/5.0</span></div>
+            <div id="stars">
+            {% for i in range(rev.stars) %}
+                <i class="material-icons given">star_border</i>
+            {% endfor %}
+            {% for i in range(5 - rev.stars) %}
+                <i class="material-icons ngiven">star_border</i>
+            {% endfor %}
+            <span>{{ rev.rating }}/5</span>
+            </div>
         </div>
-
-    </div><div class="trend-list">
-        <a href="#">₹9 Lac at  ₹30000/month</a>
-        <br>
-        <button>Home Loan</button>
-        <div id="ratings">
-            <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><i class="material-icons ngiven">star_border</i><i class="material-icons ngiven">star_border</i><span>2.0/5.0</span></div>
-        </div>
-
-    </div><div class="trend-list">
-        <a href="#">₹9 Lac at  ₹30000/month</a>
-        <br>
-        <button>Home Loan</button>
-        <div id="ratings">
-            <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><i class="material-icons ngiven">star_border</i><i class="material-icons ngiven">star_border</i><span>2.0/5.0</span></div>
-        </div>
-
     </div>
+    {% endfor %}
+
 </div>
 
 {% endblock %}

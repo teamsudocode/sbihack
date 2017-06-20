@@ -213,21 +213,21 @@ class Homeloan(db.Model):
         tot_emi = (r*((1 + r)**N)*P)/(((1 + r)**N) - 1)
         return tot_emi
     
-    def __init__(self, Id, LoanType, LoanName, InterestRate, TenureLowerLimit, TenureUpperLimit, PrincipalLowerLimit, PrincipalUpperLimit, PrePaymentPenalty, FlexiPay, ageLowerLimit, ageUpperLimit, CustomerType, Comments):
-        self.Id = Id
-        self.LoanType = LoanType
-        self.LoanName = LoanName
-        self.InterestRate = InterestRate
-        self.TenureLowerLimit = TenureLowerLimit
-        self.TenureUpperLimit = TenureUpperLimit
-        self.PrincipalLowerLimit = PrincipalLowerLimit
-        self.PrincipalUpperLimit = PrincipalUpperLimit
-        self.PrePaymentPenalty = PrePaymentPenalty
-        self.FlexiPay = FlexiPay
-        self.ageLowerLimit = ageLowerLimit
-        self.ageUpperLimit = ageUpperLimit
-        self.CustomerType = CustomerType
-        self.Comments = Comments
+    # def __init__(self, Id, LoanType, LoanName, InterestRate, TenureLowerLimit, TenureUpperLimit, PrincipalLowerLimit, PrincipalUpperLimit, PrePaymentPenalty, FlexiPay, ageLowerLimit, ageUpperLimit, CustomerType, Comments):
+    #     self.Id = Id
+    #     self.LoanType = LoanType
+    #     self.LoanName = LoanName
+    #     self.InterestRate = InterestRate
+    #     self.TenureLowerLimit = TenureLowerLimit
+    #     self.TenureUpperLimit = TenureUpperLimit
+    #     self.PrincipalLowerLimit = PrincipalLowerLimit
+    #     self.PrincipalUpperLimit = PrincipalUpperLimit
+    #     self.PrePaymentPenalty = PrePaymentPenalty
+    #     self.FlexiPay = FlexiPay
+    #     self.ageLowerLimit = ageLowerLimit
+    #     self.ageUpperLimit = ageUpperLimit
+    #     self.CustomerType = CustomerType
+    #     self.Comments = Comments
 
     def __repr__(self):
         return '<Homeloan %r' % self.Id
@@ -256,22 +256,22 @@ class EduLoan(db.Model):
         tot_emi = (r*((1 + r)**N)*P)/(((1 + r)**N) - 1)
         return tot_emi
 
-    def __init__(self, Id, LoanType, Tenure, EffInterestRate, ResetPeriod, Nationality, CourseType,
-                 InstituteType, InstituteCountry, LoanLimit, Security, Gender, Concession, Comments):
-        self.Id = Id
-        self.LoanType = LoanType
-        self.Tenure = Tenure
-        self.EffInterestRate = EffInterestRate
-        self.ResetPeriod = ResetPeriod
-        self.Nationality = Nationality
-        self.CourseType = CourseType
-        self.InstituteType = InstituteType
-        self.InstituteCountry = InstituteCountry
-        self.LoanLimit = LoanLimit
-        self.Security = Security
-        self.Gender = Gender
-        self.Concession = Concession
-        self.Comments = Comments
+    # def __init__(self, Id, LoanType, Tenure, EffInterestRate, ResetPeriod, Nationality, CourseType,
+    #              InstituteType, InstituteCountry, LoanLimit, Security, Gender, Concession, Comments):
+    #     self.Id = Id
+    #     self.LoanType = LoanType
+    #     self.Tenure = Tenure
+    #     self.EffInterestRate = EffInterestRate
+    #     self.ResetPeriod = ResetPeriod
+    #     self.Nationality = Nationality
+    #     self.CourseType = CourseType
+    #     self.InstituteType = InstituteType
+    #     self.InstituteCountry = InstituteCountry
+    #     self.LoanLimit = LoanLimit
+    #     self.Security = Security
+    #     self.Gender = Gender
+    #     self.Concession = Concession
+    #     self.Comments = Comments
 
     def __repr__(self):
         return '<Eduloan %r>' % self.Id

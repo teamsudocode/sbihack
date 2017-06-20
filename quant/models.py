@@ -126,7 +126,7 @@ class Review(db.Model):
 
     @property
     def stars(self):
-        return int(rating)
+        return round(float(self.rating))
 
     def __repr__(self):
         return "<Review id='%s', userid='%s', productid='%s', rating='%s', created_at='%s', user='%s', product='%s'>" % (
@@ -163,19 +163,19 @@ class Account(db.Model):
     # sqlite doesn't allow floating points, so store as strings
     account_number = db.Column(db.String(20), primary_key=True)
     owner_cif = db.Column(db.String(20), db.ForeignKey("user.cif"))
-    balance = db.Column(db.Integer, nullable=False, default=0)
+    balance = db.Column(db.String(10), nullable=False, default=0)
 
     def __init__(self, account_number, owner_cif, balance):
         self.account_number = account_number
         self.owner_cif = owner_cif
-        self.balance = balance
+        self.balance = str(balance)
 
     def __repr__(self):
         return "<Account #='%s' balance='%f' type='%s'>" % (
             self.account_number, self.balance, self.AccountCategory)
 
     @property
-    def balance(self):
+    def _balance(self):
         return float(self.TotalBalance)
 
     @property
@@ -198,10 +198,9 @@ class Homeloan(db.Model):
     __tablename__ = "homeloan"
 
     Id = db.Column(db.Integer, primary_key = True)
-    LoanType = db.Column(db.String(80))
+    LoanType = db.Column(db.String(20), default="Home Loan")
     LoanName = db.Column(db.String(100))
     InterestRate = db.Column(db.Float)
-    TenureLowerLimit = db.Column(db.Integer)
     TenureUpperLimit = db.Column(db.Integer)
     PrincipalLowerLimit = db.Column(db.Integer)
     PrincipalUpperLimit = db.Column(db.Integer)
@@ -217,32 +216,38 @@ class Homeloan(db.Model):
         r = self.InterestRate
         tot_emi = (r*((1 + r)**N)*P)/(((1 + r)**N) - 1)
         return tot_emi
-    
-    # def __init__(self, Id, LoanType, LoanName, InterestRate, TenureLowerLimit, TenureUpperLimit, PrincipalLowerLimit, PrincipalUpperLimit, PrePaymentPenalty, FlexiPay, ageLowerLimit, ageUpperLimit, CustomerType, Comments):
-    #     self.Id = Id
-    #     self.LoanType = LoanType
-    #     self.LoanName = LoanName
-    #     self.InterestRate = InterestRate
-    #     self.TenureLowerLimit = TenureLowerLimit
-    #     self.TenureUpperLimit = TenureUpperLimit
-    #     self.PrincipalLowerLimit = PrincipalLowerLimit
-    #     self.PrincipalUpperLimit = PrincipalUpperLimit
-    #     self.PrePaymentPenalty = PrePaymentPenalty
-    #     self.FlexiPay = FlexiPay
-    #     self.ageLowerLimit = ageLowerLimit
-    #     self.ageUpperLimit = ageUpperLimit
-    #     self.CustomerType = CustomerType
-    #     self.Comments = Comments
+
+    def __init__(self, Id, LoanName, InterestRate,  
+                 TenureUpperLimit, PrincipalLowerLimit, PrincipalUpperLimit, 
+                 PrePaymentPenalty, FlexiPay, ageLowerLimit, ageUpperLimit, 
+                    CustomerType, Comments):
+        self.Id = Id
+        self.LoanName = LoanName
+        self.InterestRate = InterestRate
+        self.TenureUpperLimit = TenureUpperLimit
+        self.PrincipalLowerLimit = PrincipalLowerLimit
+        self.PrincipalUpperLimit = PrincipalUpperLimit
+        self.PrePaymentPenalty = PrePaymentPenalty
+        self.FlexiPay = FlexiPay
+        self.ageLowerLimit = ageLowerLimit
+        self.ageUpperLimit = ageUpperLimit
+        self.CustomerType = CustomerType
+        self.Comments = Comments
 
     def __repr__(self):
         return '<Homeloan %r' % self.Id
+
+    @property
+    def Tenure(self):
+        return self.TenureUpperLimit
 
 
 class EduLoan(db.Model):
     __tablename__ = "eduloan"
 
     Id = db.Column(db.Integer, primary_key=True)
-    LoanType = db.Column(db.String(80))
+    LoanType = db.Column(db.String(80), default="Education Loan")
+    LoanName = db.Column(db.String(100))
     Tenure = db.Column(db.Float)
     EffInterestRate = db.Column(db.Float)
     ResetPeriod = db.Column(db.Float)
@@ -261,22 +266,22 @@ class EduLoan(db.Model):
         tot_emi = (r*((1 + r)**N)*P)/(((1 + r)**N) - 1)
         return tot_emi
 
-    # def __init__(self, Id, LoanType, Tenure, EffInterestRate, ResetPeriod, Nationality, CourseType,
-    #              InstituteType, InstituteCountry, LoanLimit, Security, Gender, Concession, Comments):
-    #     self.Id = Id
-    #     self.LoanType = LoanType
-    #     self.Tenure = Tenure
-    #     self.EffInterestRate = EffInterestRate
-    #     self.ResetPeriod = ResetPeriod
-    #     self.Nationality = Nationality
-    #     self.CourseType = CourseType
-    #     self.InstituteType = InstituteType
-    #     self.InstituteCountry = InstituteCountry
-    #     self.LoanLimit = LoanLimit
-    #     self.Security = Security
-    #     self.Gender = Gender
-    #     self.Concession = Concession
-    #     self.Comments = Comments
+    def __init__(self, Id, LoanType, Tenure, EffInterestRate, ResetPeriod, Nationality, CourseType,
+                 InstituteType, InstituteCountry, LoanLimit, Security, Gender, Concession, Comments):
+        self.Id = Id
+        self.LoanName = LoanType
+        self.Tenure = Tenure
+        self.EffInterestRate = EffInterestRate
+        self.ResetPeriod = ResetPeriod
+        self.Nationality = Nationality
+        self.CourseType = CourseType
+        self.InstituteType = InstituteType
+        self.InstituteCountry = InstituteCountry
+        self.LoanLimit = LoanLimit
+        self.Security = Security
+        self.Gender = Gender
+        self.Concession = Concession
+        self.Comments = Comments
 
     def __repr__(self):
         return '<Eduloan %r>' % self.Id
@@ -347,3 +352,73 @@ class Transaction(db.Model):
     def __repr__(self):
         return "<Transaction timestamp='%s' amount='%s' accountNumber='%s' >" % (
             self.timestamp, self.amount, self.accountNumber)
+
+
+# if __name__ == "__main__":
+#     """For testing purposes
+#     Use the same code for the main app
+#     """
+#     print("starting")
+#     app = create_app()
+#     app.app_context().push()
+#     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
+#     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+#     db.init_app(app)
+#     print(db)
+#     db.create_all(app=app)
+#     # users = [
+#     #     User(name="himanshu", cif="123"),
+#     #     User(name="sudhanshu", cif="012"),
+#     #     User(name="sharma", cif="232"),
+#     #     User(name="priyanshu", cif="423")
+#     # ]
+#     # products = [
+#     #     Product(name="produ1", category="home"),
+#     #     Product(name="produ2", category="new")
+#     # ]
+#     # db.session.add_all(users)
+#     # db.session.add_all(products)
+#     Review.query.filter_by(userid=1, productid=2).delete()
+#     Review.query.filter_by(userid=1, productid=1).delete()
+#     Review.query.filter_by(userid=2, productid=1).delete()
+#     Review.query.filter_by(userid=3, productid=1).delete()
+#     Review.query.filter_by(userid=4, productid=1).delete()
+#     reviews = [
+#         Review(userid=1, productid=2, rating="1.2", title="badhiya", comment="haha lol"),
+#         Review(userid=1, productid=1, rating="2.3", title="lag gayi", comment="nice"),
+#         Review(userid=2, productid=1, rating="3.3", title="wow", comment="nice"),
+#         Review(userid=3, productid=1, rating="3.3", title="haha", comment="nice"),
+#         Review(userid=4, productid=1, rating="4.3", title="lol", comment="nice")
+#     ]
+#     db.session.add_all(reviews)
+#     db.session.commit()
+#     issue = Issue(reviewid=2)
+#     db.session.add(issue)
+#     db.session.add(Issue(reviewid=3))
+#     db.session.add(Issue(reviewid=4))
+#     db.session.add(Issue(reviewid=5))
+#     print('issue created', Issue.query.all())
+#     # re = Review(userid=1, productid=2, rating="0.6", comment="haha not good")
+#     # if above review exists
+#     # otherwise you'd get sqlalchemy.exc.IntegrityError, so try---catch
+#     target = Review.query.filter_by(productid=2, userid=1).first()
+#     if target:
+#         print("review already exists")
+#         target.rating = "0.6"
+#         target.comment = "not good"
+#         # that's all to be done to update information
+#         # you can also perform db.session.commit() for safety
+#     else:
+#         db.session.add(Review(userid=1, productid=2, rating="0.6", comment="not good"))
+#         print(User.query.all())
+#         print(Product.query.all())
+#         print(Review.query.all())
+#         print(Review.query.filter_by(productid=1).first())
+#         print(Review.query.filter_by(productid=2).first())
+
+#     logs = [
+#         Log(userid=1, productid=2, timestamp=datetime.strptime("2017-05-04", "%Y-%m-%d")),
+#         Log(userid=1, productid=1, timestamp=datetime.strptime("2017-05-29", "%Y-%m-%d")),
+#         Log(userid=2, productid=1, timestamp=datetime.strptime("2017-04-03", "%Y-%m-%d")),
+#         Log(userid=2, productid=2, timestamp=datetime.strptime("2017-06-13", '%Y-%m-%d'))
+#     ]

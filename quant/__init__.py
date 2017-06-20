@@ -63,14 +63,19 @@ def bank_dashboard():
                     .order_by(sqlalchemy.desc(Log.timestamp)) \
                     .all()
     # get the min and max timestamps
-    from pprint import pprint
-    last_log = logs[0]
-    first_log = logs[-1]
-    gap = (last_log.timestamp-first_log.timestamp).total_seconds()
-    sizeof_division = gap / 10 # there are 10 blocks
-    labels = [(first_log.timestamp + timedelta(seconds=sizeof_division)).strftime("%H:%M %p")
-              for i in range(10)]
-    datasets = [0 for i in range(10)]
+    try:
+        last_log = logs[0]
+        first_log = logs[-1]
+        gap = (last_log.timestamp-first_log.timestamp).total_seconds()
+        sizeof_division = gap / 10 # there are 10 blocks
+        if sizeof_division == 0:
+            sizeof_division = 1
+        labels = [(first_log.timestamp + timedelta(seconds=sizeof_division)).strftime("%H:%M %p")
+                  for i in range(10)]
+        datasets = [0 for i in range(10)]
+    except IndexError:
+        labels = ["Nothing available"]
+        datasets = [0]
     for log in logs:
         datasets[int((log.timestamp - first_log.timestamp).total_seconds() / sizeof_division) - 1] += 1
     return render_template("bank-dashboard.html", 
@@ -81,6 +86,7 @@ def bank_dashboard():
 def bank_trends():
     top_rated = Review.query.order_by(sqlalchemy.desc(Review.rating)).limit(5).all()
     least_rated = Review.query.order_by(sqlalchemy.asc(Review.rating)).limit(5).all()
+    print(len(top_rated), len(least_rated))
     return render_template("bank-trends.html", top_rated=top_rated, least_rated=least_rated)
 
 

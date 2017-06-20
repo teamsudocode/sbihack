@@ -1,39 +1,106 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Quant: On the go financial advise.</title>
+</head>
 
-<div class="row">
-    <h4>{{ product.name }}</h4>
-</div>
-<div class="row">
-    <table class="table">
-        <th>
-            <td>Username</td>
-            <td>Time</td>
-            <td>Rating</td>
-            <td>Comment</td>
-        </th>
-        {% for review in reviews %}
-        <tr>
-            <td>{{ review.id }}</td>
-            <td>{{ review.user.name }}</td>
-            <td>{{ review.created_at.strftime("%d %B %Y") }}</td>
-            <td>{{ review.rating }}</td>
-            <td>{{ review.comment }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-</div>
+<body>
+    <!--HEADER-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12" id="navbar"><a id="logo-link" href="dashboard.html">Quant</a><button id="signin" class="quant-btn">Sign In</button></div>
+        </div>
+        <!--SIDENAV-->
+        <div class="row">
+            <div class="col-sm-2" id="sidenavmaster">
+                <div id="sidenav">
+                    <div class="option"><img src="icons/dashboard-inactive.png">
+                        <p>Dashboard</p>
+                    </div>
+                    <div class="option active"><img src="icons/loan-selected.png">
+                        <p>Loans</p>
+                    </div>
+                    <div class="option"><img src="icons/deposit-inactive.png">
+                        <p>Deposits</p>
+                    </div>
+                    <div class="option"><img src="icons/insurance-inactive.png">
+                        <p>Insurance</p>
+                    </div>
+                    <div class="option"><img src="icons/support-inactive.png">
+                        <p>Support</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5" id="details">
+                <h1>Home loan scheme</h1>
+                <div class="card-detailed">
+                    <h1>₹20 Lac at ₹4500/month</h1>
+                    <button>Home Loan</button>
+                    <p>Rate of Interest: 7%</p>
+                    <p>Tenure: 12 years</p>
+                    <div id="ind-rate">
+                        <i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span>
+                    </div>
+                    <div id="ind-users"><i class="material-icons">people_outline</i><span>Recommended by 229 users</span></div>
 
-<div class="row">
-    <h4>Enter your review</h4>
-    <form action="/submit_review" method="POST">
-        <input name="userid" type="number" value="{{ me.id }}" hidden />
-        <input name="productid" type="number" value="{{ product.id }}" hidden />
-        <input name="rating" type="number" step="0.1" value="0" min="0" max="5" />
-        <input name="comment" type="text" placeholder="This is what I feel about the product..." />
-        <button class="btn btn-primary">Submit review</button>
-    </form>
-</div>
+                </div>
+                <h1>Reviews and comments</h1>
+                <div id="commentbox">
+                    <div class="commentcard">
+                        <div id="dp"><img src="icons/user.png">
+                            <p>Souvik Sen</p>
+                        </div>
+                        <div id="comment">
+                            <h1>Suitable for a middle class family.</h1>
+                            <p>I earn ₹45000/- per month and took this scheme, the EMIs are affordable and bank has been very supportive</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="commentcard">
+                    <div id="dp"><img src="icons/user.png">
+                        <p>Priyanshu Kumar</p>
+                    </div>
+                    <div id="comment">
+                        <h1>Double edged sword</h1>
+                        <p>Bank has cheated me, it is mentioned that EMI is worth ₹ 12,000 but they are deducting ₹ 15,000.</p>
+                    </div>
 
-{% endblock %}
+                </div>
+            </div>
+            <div class="col-sm-5" id="reviews">
+                <h1>What the customers has to say</h1>
+                <div class="reviewcard">
+                    <div class="question">
+                        <h2>Q. Would you recommend this scheme to other people?</h2>
+                        <div class="poll"></div>
+                        <p>73% of the customers who took this scheme said Yes!</p>
+                    </div>
+                    <div class="question">
+                        <h2>Q. Are you happy with the service from the bank?</h2>
+                        <div></div>
+                        <p>95% of the customers who took this scheme said Yes!</p>
+                    </div>
+                    <div class="question">
+                        <h2>Q. Are you satisfied with the terms of the scheme?</h2>
+                        <div></div>
+                        <p>45% of the customers who took this scheme said Yes!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+</html>
+<link rel="stylesheet" href="bootstrap.min.css">
+<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="product.css">
+
+
+</script>

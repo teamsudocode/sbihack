@@ -40,6 +40,7 @@ class Homeloan(db.Model):
         return '<Homeloan %r' % self.Id
 
 
-"""
-Will add data tonight
-"""
+ data1 = Homeloan(1, 'Homeloan', 'SBI Reverse Mortgage Loan', 11.9, 0, 30, 100000, 3000000, 0, 1, 18, 70, 'Senior Citizen', 'For personal use')
+
+ db.session.add(data1)
+ db.session.commit()

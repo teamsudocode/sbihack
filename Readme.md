@@ -8,7 +8,7 @@
     2. sudo easy_install3 pip
 2. Open terminal in folder sbihack
 3. sudo pip3 install -r requirements.txt
-4. cd quant/
-5. python3 __init__.py
+4. ```cd quant/```
+5. python3 ```__init__.py```
 
 There you go !!

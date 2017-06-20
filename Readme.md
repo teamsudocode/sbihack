@@ -16,6 +16,8 @@ Your site is live at http://localhost:5000/
 
 For customer part: http://localhost:5000/customer/dashboard
 
+Checkout any product at: http://localhost:5000/product/1
+
 For bank part: http://localhost:5000/bank/dashboard
 
 There you go !!

@@ -3,6 +3,7 @@
 from flask import Flask, render_template, jsonify, request, g
 from models import *
 import json
+import random
 from datetime import datetime, timedelta
 
 app = create_app()
@@ -41,7 +42,10 @@ def customer_dashboard():
 
 @app.route("/customer/loans")
 def customer_loans():
-    return render_template("loans.html")
+    loans = Homeloan.query.limit(5).all()
+    loans.append(EduLoan.query.limit(5).all())
+    random.shuffle(loans)
+    return render_template("loans.html", loans=loans)
 
 @app.route("/customer/deposits")
 def customer_deposits():
@@ -80,7 +84,9 @@ def bank_dashboard():
         datasets[int((log.timestamp - first_log.timestamp).total_seconds() / sizeof_division) - 1] += 1
     return render_template("bank-dashboard.html", 
                            labels=labels,
-                           datasets=datasets)
+                           datasets=datasets,
+                           total_online=round(len(logs)/3),
+                           total_hits=len(logs))
 
 @app.route("/bank/trends")
 def bank_trends():

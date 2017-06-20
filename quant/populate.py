@@ -62,10 +62,11 @@ for i in range(1,50):
     db.session.add(temp)
 
 for i in range(1,20):
-    id = i
-    timestamp = randomDate("2005-01-01", "2017-06-20", random.random())
-    amount = random.randint(10000,5000000)
-    accountNumber = random.randint(10000,5000000)
+    curtime = randomDate("2005-01-01", "2017-06-20", random.random())
+    am = random.randint(10000,5000000)
+    accNumber = str(random.randint(100000000000000000000,99999999999999999999))
+    temp = transaction(id = i,timestamp = curtime, amount = am, accountNumber = accNumber)
+    db.session.add(temp)
 
 eduloans = [
 	EduLoan(1, 'ScholarSBI1', 4, 9.0, 1, 'Indian', 'UnderGrad', 'IIT/IIM/NIT/IIIT', 'India', 1000000, 'Parent', 'M/F', 0.0, 'Mighty IITians'),
@@ -74,4 +75,13 @@ eduloans = [
 	EduLoan(4, 'ScholarSBI4', 6, 8.5, 1, 'Indian/NRI', 'UnderGrad/PostGrad', 'Any', 'India/Abroad', 1000000, 'Parent/Collateral', 'M/F', 0.0, 'None')
 ]
 db.session.add_all(eduloans)
-db.session.commit()
+
+homeloan = [
+    Homeloan(1, 'SBI_Home_Loan_1', 11.9, 20, 100000, 3000000, 0, 1, 18, 70, 'Senior Citizen', 'For personal use')
+    Homeloan(2, 'SBI_Home_Loan_2', 8.5, 25, 100000, 5000000, 0, 1, 18, 70, 'Female', 'Ladies Quota')
+    Homeloan(3, 'SBI_Home_Loan_3', 9.7, 35, 100000, 10000000, 0, 1, 18, 70, 'Any', 'Home Only')
+    Homeloan(4, 'SBI_Home_Loan_4', 7.9, 30, 100000, 50000000, 0, 1, 18, 70, 'SC/ST', 'Bahut faydaa hai')
+]
+
+ db.session.add_all(homeloan)
+ db.session.commit()

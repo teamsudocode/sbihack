@@ -275,4 +275,4 @@ class Transaction(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     timestamp = db.Column(db.DateTime, default=datetime.now())
     amount = db.Column(db.Integer, nullable=False)
-    accountNumber = db.Column(db.Integer, db.ForeignKey("account.account_number"))
+    accountNumber = db.Column(db.String(20), db.ForeignKey("account.account_number"))

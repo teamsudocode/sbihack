@@ -28,7 +28,15 @@ def query():
 @app.route("/customer")
 @app.route("/customer/dashboard")
 def customer_dashboard():
-    return render_template("dashboard.html")
+    start_time = datetime.strptime("01-06-2017", "%d-%m-%Y")
+    end_time = datetime.now()
+    transactions = Transaction.query.filter(Transaction.timestamp > start_time, Transaction.timestamp < end_time) \
+                                    .order_by(sqlalchemy.asc(Transaction.timestamp)) \
+                                    .all()
+    labels = [trans.timestamp.strftime("%d %B") for trans in transactions]
+    dataset = [trans.amount for trans in transactions]
+    print(labels)
+    return render_template("dashboard.html", labels=labels, dataset=dataset)
 
 
 @app.route("/customer/loans")
@@ -173,4 +181,6 @@ def not_found(error):
 
 
 if __name__ == "__main__":
+    db.session.commit()
+    print(Transaction.query.all())
     app.run(debug=True)

@@ -76,7 +76,7 @@ class Product(db.Model):
             self.id, self.name, self.category)
 
     @property
-    def product_details:
+    def product_details(self):
         if self.category == ProductEnum.homeloan.value:
             return "query from homeloan table"
         elif self.category == ProductEnum.eduloan.value:
@@ -127,6 +127,7 @@ class Issue(db.Model):
     """issue to be resolved if any
     status: open / closed
     """
+    __tablename__ = "issue"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     created_at = db.Column(db.DateTime, default=datetime.now())
     reviewid = db.Column(db.Integer, db.ForeignKey("review.id"), nullable=False)
@@ -144,34 +145,20 @@ class Issue(db.Model):
 
 class Account(db.Model):
     """collection of all bank accounts"""
+    __tablename__ = "account"
     # sqlite doesn't allow floating points, so store as strings
-    AccountNumber = db.Column(db.String(20), primary_key=True)
-    AccountCategory = db.Column(db.String(1))
-    AccountOpeningDate = db.Column(db.String(4))
-    AccountStatus = db.Column(db.String(10))
-    AccountType = db.Column(db.String(30))
-    AccountTypeCode = db.Column(db.String(5))
-    ApprovedSanctionedAmount = db.Column(db.String(10))
-    AvailableBalance = db.Column(db.String(10))
-    Currency = db.Column(db.String(5))
-    DPAvailable = db.Column(db.String(5))
-    HomeBranch = db.Column(db.String(5))
-    IntCategory = db.Column(db.String(5))
-    InterestRate = db.Column(db.String(5))
-    Link = db.Column(db.String(5))
-    MaturityAmount = db.Column(db.String(10))
-    MaturityDate = db.Column(db.String(8))
-    PrincipleAmount = db.Column(db.String(10))
-    TermPeriod = db.Column(db.String(10))
-    TotalBalance = db.Column(db.String(10))
+    account_number = db.Column(db.String(20), primary_key=True)
+    owner_cif = db.Column(db.String(20), db.ForeignKey("user.cif"))
+    balance = db.Column(db.Integer, nullable=False, default=0)
 
-    def __init__(self, **kwargs):
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+    def __init__(self, account_number, owner_cif, balance):
+        self.account_number = account_number
+        self.owner_cif = owner_cif
+        self.balance = balance
 
     def __repr__(self):
-        return "<Account balance='%f' type='%s'>" % (
-            self.balance, self.AccountCategory)
+        return "<Account #='%s' balance='%f' type='%s'>" % (
+            self.account_number, self.balance, self.AccountCategory)
 
     @property
     def balance(self):
@@ -194,6 +181,8 @@ class Account(db.Model):
 
 
 class Homeloan(db.Model):
+    __tablename__ = "homeloan"
+
     Id = db.Column(db.Integer, primary_key = True)
     LoanType = db.Column(db.String(80))
     LoanName = db.Column(db.String(100))
@@ -236,6 +225,8 @@ class Homeloan(db.Model):
 
 
 class EduLoan(db.Model):
+    __tablename__ = "eduloan"
+
     Id = db.Column(db.Integer, primary_key=True)
     LoanType = db.Column(db.String(80))
     Tenure = db.Column(db.Float)
@@ -277,11 +268,14 @@ class EduLoan(db.Model):
         return '<Eduloan %r>' % self.Id
 
 
-# class Transaction(db.Model):
-    # """ All transactions """
-    # amount = db.Column(db.Integer, nullable=False)
-    # timestamp = db.Column(db.DateTime, default=datetime.now())
-    # accountNumber = db.Column(db.Integer, db.ForeignKey("Account. ff``"))
+class Transaction(db.Model):
+    """ All transactions, required for mini-statement """
+    __tablename__ = "transaction"
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    timestamp = db.Column(db.DateTime, default=datetime.now())
+    amount = db.Column(db.Integer, nullable=False)
+    accountNumber = db.Column(db.Integer, db.ForeignKey("account.account_number"))
 
 
 if __name__ == "__main__":

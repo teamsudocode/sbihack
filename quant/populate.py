@@ -33,6 +33,12 @@ for i in range(1,25):
 for i in range(1,25):
     name = randomword(random.randint(4,9))
     category = random.randint(1,5)
+    title = random.choice(["Home loan for &#8377 20 lac; at &#8377; 15000/month",
+        "Car loan for &#8377 10 lac; at &#8377; 5900/month",
+        "Home loan for &#8377 15 lac; at &#8377; 8000/month",
+        "Home loan for &#8377 10 lac; at &#8377; 6000/month",
+        "Education loan for &#8377 10 lac; at &#8377; 1600/month",
+        "Education loan for &#8377 20 lac; at &#8377; 4500/month"])
     temp = Product(name,category)
     db.session.add(temp)
 

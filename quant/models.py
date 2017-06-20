@@ -193,6 +193,90 @@ class Account(db.Model):
         return datetime.strptime(self.MaturityDate, "%Y%m%d")
 
 
+class Homeloan(db.Model):
+    Id = db.Column(db.Integer, primary_key = True)
+    LoanType = db.Column(db.String(80))
+    LoanName = db.Column(db.String(100))
+    InterestRate = db.Column(db.Float)
+    TenureLowerLimit = db.Column(db.Integer)
+    TenureUpperLimit = db.Column(db.Integer)
+    PrincipalLowerLimit = db.Column(db.Integer)
+    PrincipalUpperLimit = db.Column(db.Integer)
+    PrePaymentPenalty = db.Column(db.Integer)
+    FlexiPay = db.Column(db.Integer)
+    ageLowerLimit = db.Column(db.Integer)
+    ageUpperLimit = db.Column(db.Integer)
+    CustomerType = db.Column(db.String(100))
+    Comments = db.Column(db.String(100))
+
+
+    def calc_emi(self,N,P) :
+        r = self.InterestRate
+        tot_emi = (r*((1 + r)**N)*P)/(((1 + r)**N) - 1)
+        return tot_emi
+    
+    def __init__(self, Id, LoanType, LoanName, InterestRate, TenureLowerLimit, TenureUpperLimit, PrincipalLowerLimit, PrincipalUpperLimit, PrePaymentPenalty, FlexiPay, ageLowerLimit, ageUpperLimit, CustomerType, Comments):
+        self.Id = Id
+        self.LoanType = LoanType
+        self.LoanName = LoanName
+        self.InterestRate = InterestRate
+        self.TenureLowerLimit = TenureLowerLimit
+        self.TenureUpperLimit = TenureUpperLimit
+        self.PrincipalLowerLimit = PrincipalLowerLimit
+        self.PrincipalUpperLimit = PrincipalUpperLimit
+        self.PrePaymentPenalty = PrePaymentPenalty
+        self.FlexiPay = FlexiPay
+        self.ageLowerLimit = ageLowerLimit
+        self.ageUpperLimit = ageUpperLimit
+        self.CustomerType = CustomerType
+        self.Comments = Comments
+
+    def __repr__(self):
+        return '<Homeloan %r' % self.Id
+
+
+class EduLoan(db.Model):
+    Id = db.Column(db.Integer, primary_key=True)
+    LoanType = db.Column(db.String(80))
+    Tenure = db.Column(db.Float)
+    EffInterestRate = db.Column(db.Float)
+    ResetPeriod = db.Column(db.Float)
+    Nationality = db.Column(db.String(100))
+    CourseType = db.Column(db.String(100))
+    InstituteType = db.Column(db.String(100))
+    InstituteCountry = db.Column(db.String(100))
+    LoanLimit = db.Column(db.Integer)
+    Security = db.Column(db.String(100))
+    Gender = db.Column(db.String(10))
+    Concession = db.Column(db.Float)
+    Comments = db.Column(db.String(100))
+
+    def calc_emi(self,N,P) :
+        r = self.EffInterestRate - self.Concession
+        tot_emi = (r*((1 + r)**N)*P)/(((1 + r)**N) - 1)
+        return tot_emi
+
+    def __init__(self, Id, LoanType, Tenure, EffInterestRate, ResetPeriod, Nationality, CourseType,
+                 InstituteType, InstituteCountry, LoanLimit, Security, Gender, Concession, Comments):
+        self.Id = Id
+        self.LoanType = LoanType
+        self.Tenure = Tenure
+        self.EffInterestRate = EffInterestRate
+        self.ResetPeriod = ResetPeriod
+        self.Nationality = Nationality
+        self.CourseType = CourseType
+        self.InstituteType = InstituteType
+        self.InstituteCountry = InstituteCountry
+        self.LoanLimit = LoanLimit
+        self.Security = Security
+        self.Gender = Gender
+        self.Concession = Concession
+        self.Comments = Comments
+
+    def __repr__(self):
+        return '<Eduloan %r>' % self.Id
+
+
 # class Transaction(db.Model):
     # """ All transactions """
     # amount = db.Column(db.Integer, nullable=False)

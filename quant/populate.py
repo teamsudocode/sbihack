@@ -81,10 +81,15 @@ eduloans = [
 db.session.add_all(eduloans)
 
 homeloan = [
-    Homeloan(1, 'SBI_Home_Loan_1', 11.9, 20, 100000, 3000000, 0, 1, 18, 70, 'Senior Citizen', 'For personal use')
-    Homeloan(2, 'SBI_Home_Loan_2', 8.5, 25, 100000, 5000000, 0, 1, 18, 70, 'Female', 'Ladies Quota')
-    Homeloan(3, 'SBI_Home_Loan_3', 9.7, 35, 100000, 10000000, 0, 1, 18, 70, 'Any', 'Home Only')
-    Homeloan(4, 'SBI_Home_Loan_4', 7.9, 30, 100000, 50000000, 0, 1, 18, 70, 'SC/ST', 'Bahut faydaa hai')
+        Homeloan(1, 'SBI_Home_Loan_1', 11.9, 20, 100000, 3000000, 0, 1, 18, 70, 'Senior Citizen', 'For personal use')
+        Homeloan(2, 'SBI_Home_Loan_2', 8.5, 25, 100000, 5000000, 0, 1, 18, 70, 'Female', 'Ladies Quota')
+        Homeloan(3, 'SBI_Home_Loan_3', 9.7, 35, 100000, 10000000, 0, 1, 18, 70, 'Any', 'Home Only')
+        Homeloan(4, 'SBI_Home_Loan_4', 7.7, 30, 100000, 50000000, 0, 1, 18, 70, 'SC', 'Bahut faydaa hai')
+	Homeloan(5, 'SBI_Home_Loan_5', 9.9, 20, 100000, 500000, 0, 1, 18, 70, 'Any', 'kam loge to yahi hoga')
+	Homeloan(6, 'SBI_Home_Loan_6', 7.5, 30, 100000, 50000000, 0, 1, 18, 70, 'ST', 'Bahut faydaa hai')
+	Homeloan(7, 'SBI_Home_Loan_7', 8.0, 25, 100000, 50000000, 0, 1, 18, 28, 'Any', 'Young Raho')
+	Homeloan(8, 'SBI_Home_Loan_8', 9, 8, 100000, 50000000, 0, 1, 18, 70, 'Any', 'Fast repayment')
+	
 ]
 
  db.session.add_all(homeloan)

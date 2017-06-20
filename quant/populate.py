@@ -1,4 +1,5 @@
 import random, string, time
+from __init__ import *
 from models import *
 
 def strTimeProp(start, end, format, prop):
@@ -22,52 +23,62 @@ def randomDate(start, end, prop):
     return strTimeProp(start, end, '%Y-%m-%d', prop)
 
 def randomword(length):
-   return ''.join(random.choice(string.lowercase) for i in range(length))
+    return ''.join(random.choice(string.ascii_lowercase) for i in range(length))
 
-for i in range(1,25):
+def randombignum(length):
+    return ''.join(random.choice(string.digits) for i in range(length))
+
+for i in range(1,50):
     curdate = randomDate("2005-01-01", "2017-06-20", random.random())
     temp = Log(userid = i,productid = random.randint(1,5), timestamp= curdate)
     db.session.add(temp)
+    db.session.commit()
 
-for i in range(1,25):
+for i in range(1,40):
     name = randomword(random.randint(4,9))
     category = random.randint(1,5)
     temp = Product(name,category)
     db.session.add(temp)
+    db.session.commit()
 
-for i in range(1,25):
+for i in range(1,40):
     name = randomword(random.randint(4,9))
     cif = random.randint(1,10000)
     temp = User(name,cif)
     db.session.add(temp)
+    db.session.commit()
 
 for i in range(1,40):
-    userid = random.randint(1,25)
-    productid = random.randint(1,25)
+    userid = i
+    productid = i
     rating = random.randint(1,5)
     title = randomword(random.randint(5,10))
     comment = randomword(random.randint(5,15))
     temp = Review(userid, productid, rating, title, comment)
     db.session.add(temp)
+    db.session.commit()
 
-for i in range(1,7) : 
+for i in range(1,7) :
     reviewid = i
     temp = Issue(reviewid)
     db.session.add(temp)
+    db.session.commit()
 
 for i in range(1,50):
-    account_number =  str(random.randint(100000000000000000000,99999999999999999999))
-    owner_cif = str(random.randint(10000000000,9999999999))
+    account_number =  randombignum(20)
+    owner_cif = randombignum(10)
     balance = random.randint(10000,10000000)
     temp = Account(account_number, owner_cif, balance)
     db.session.add(temp)
+    db.session.commit()
 
 for i in range(1,20):
     curtime = randomDate("2005-01-01", "2017-06-20", random.random())
     am = random.randint(10000,5000000)
-    accNumber = str(random.randint(100000000000000000000,99999999999999999999))
-    temp = transaction(id = i,timestamp = curtime, amount = am, accountNumber = accNumber)
+    accNumber = randombignum(20)
+    temp = Transaction(id = i,timestamp = curtime, amount = am, accountNumber = accNumber)
     db.session.add(temp)
+    db.session.commit()
 
 eduloans = [
 	EduLoan(1, 'ScholarSBI1', 4, 9.0, 1, 'Indian', 'UnderGrad', 'IIT/IIM/NIT/IIIT', 'India', 1000000, 'Parent', 'M/F', 0.0, 'Mighty IITians'),
@@ -80,6 +91,7 @@ eduloans = [
 	EduLoan(8, 'ScholarSBI8', 5, 11, 1, 'Indian/NRI', 'UnderGrad', 'Any', 'India/Abroad', 2000000, 'Parent/Collateral', 'M/F', 0.0, 'UG only')
 ]
 db.session.add_all(eduloans)
+db.session.commit()
 
 homeloan = [
     Homeloan(1, 'SBI_Home_Loan_1', 11.9, 20, 100000, 3000000, 0, 1, 18, 70, 'Senior Citizen', 'For personal use'),
@@ -93,18 +105,17 @@ homeloan = [
 	
 ]
 db.session.add_all(homeloan)
+db.session.commit()
 
 insurance = [
     Insurance(1, 'SBI_Insurance_1', 24000, 10, 30, 8, 30, 70, 40, 80, "Yearly", 24000, 'Infinite', 'Retirment',220),
     Insurance(2, 'SBI_Insurance_1', 24000, 10, 30, 8, 30, 70, 40, 80, "Half-Yearly", 15000, 'Infinite', 'Retirment',220),
     Insurance(3, 'SBI_Insurance_1', 24000, 10, 30, 8, 30, 70, 40, 80, "Quaterly", 7500, 'Infinite', 'Retirment',220),
     Insurance(4, 'SBI_Insurance_1', 24000, 10, 30, 8, 30, 70, 40, 80, "Monthly", 2500, 'Infinite', 'Retirment',220),
-
     Insurance(5, 'SBI_Insurance_2', 6000, 0, 70, 15, 0, 13, 21, 50, "Yearly", 6000, 'Infinite', 'Child',250),
     Insurance(6, 'SBI_Insurance_2', 6000, 0, 70, 15, 0, 13, 21, 50, "Half-Yearly", 3000, 'Infinite', 'Child',250),
     Insurance(7, 'SBI_Insurance_2', 6000, 0, 70, 15, 0, 13, 21, 50, "Quaterly", 1500, 'Infinite', 'Child',250),
     Insurance(8, 'SBI_Insurance_2', 6000, 0, 70, 15, 0, 13, 21, 50, "Monthly", 500, 'Infinite', 'Child',250),
-	
     Insurance(9, 'SBI_Insurance_3', 30000, 0, 70, 15, 0, 70, 20, 80, "Yearly", 30000, 'Infinite', 'Any',200),
     Insurance(10, 'SBI_Insurance_3', 30000, 0, 70, 15, 0, 70, 20, 80, "Yearly", 17000, 'Infinite', 'Any',200),
     Insurance(11, 'SBI_Insurance_3', 30000, 0, 70, 15, 0, 70, 20, 80, "Yearly", 10000, 'Infinite', 'Any',200),

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 from flask import Flask, render_template, jsonify, request
-from quant.models import *
+from models import *
 
 app = create_app()
 app.app_context().push()
@@ -14,18 +14,56 @@ db.create_all(app=app)
 @app.route("/")
 @app.route("/index")
 def index():
-    return render_template('index.html')
+    return render_template('customer.html')
+
+
+@app.route("/query")
+def query():
+    """ query to be initiated from form in index page """
+    pass
 
 
 @app.route("/customer")
-def customer():
-    return render_template('customer.html')
+@app.route("/customer/dashboard")
+def customer_dashboard():
+    return render_template("dashboard.html")
+
+
+@app.route("/customer/loans")
+def customer_loans():
+    return render_template("loans.html")
+
+@app.route("/customer/deposits")
+def customer_deposits():
+    return render_template("deposits.html")
+
+@app.route("/customer/insurance")
+def customer_insurance():
+    return render_template("insurance.html")
+
+
+# modify the routes below using old routes
+
+@app.route("/bank")
+@app.route("/bank/dashboard")
+def bank_dashboard():
+    return render_template("bank-dashboard.html")
+
+@app.route("/bank/trends")
+def bank_trends():
+    return render_template("bank-trends.html")
+
+
+@app.route("/bank/support")
+def bank_support():
+    return render_template("bank-support.html")
+
 
 @app.route("/product/<id>")
 def product_info(id):
     product = Product.query.filter_by(id=id).first()
     reviews = Review.query.filter_by(productid=id).all()
-    me = User.query.filter_by(id=1).first()
+    me = User.query.filter_by(id=id).first()
     print(product)
     print(reviews)
     return render_template('product.html',
@@ -41,8 +79,6 @@ def create_issue_if_required(review_object):
     if review_object.rating < avg_rating :
         new_issue = Issue(created_at = datetime.now(), review_id = review_object.id, review = Review.query.filter_by(Review.query.filter_by(id = review_object.id)))
         db.session.add(new_issue)
-    print("review handler returning")
-    pass
 
 
 @app.route("/submit_review", methods=["POST"])
@@ -91,7 +127,9 @@ def admin():
 
 @app.route("/support")
 def support():
-    return render_template("support.html")
+    issues = Issue.query.filter_by(status="open").order_by(Issue.created_at).all()
+    # print(issues)
+    return render_template("support.html", issues=issues)
 
 
 @app.route("/webhook/update_accounts/<account_number>")
@@ -111,7 +149,7 @@ def fetch_mini_statement(account_number):
 
 @app.errorhandler(404)
 def not_found(error):
-    return render_template('404.html'), 404
+    return "page not found", 404
 
 
 if __name__ == "__main__":

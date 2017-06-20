@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, g
 from models import *
+import json
+from datetime import datetime, timedelta
 
 app = create_app()
 app.app_context().push()
@@ -47,7 +49,25 @@ def customer_insurance():
 @app.route("/bank")
 @app.route("/bank/dashboard")
 def bank_dashboard():
-    return render_template("bank-dashboard.html")
+    start_time = datetime.strptime("17-06-2017", "%d-%m-%Y")
+    end_time = datetime.now()
+    logs = Log.query.filter(Log.timestamp > start_time, Log.timestamp < end_time) \
+                    .order_by(sqlalchemy.desc(Log.timestamp)) \
+                    .all()
+    # get the min and max timestamps
+    from pprint import pprint
+    last_log = logs[0]
+    first_log = logs[-1]
+    gap = (last_log.timestamp-first_log.timestamp).total_seconds()
+    sizeof_division = gap / 10 # there are 10 blocks
+    labels = [(first_log.timestamp + timedelta(seconds=sizeof_division)).strftime("%H:%M %p")
+              for i in range(10)]
+    datasets = [0 for i in range(10)]
+    for log in logs:
+        datasets[int((log.timestamp - first_log.timestamp).total_seconds() / sizeof_division) - 1] += 1
+    return render_template("bank-dashboard.html", 
+                           labels=labels,
+                           datasets=datasets)
 
 @app.route("/bank/trends")
 def bank_trends():
@@ -64,8 +84,8 @@ def product_info(id):
     product = Product.query.filter_by(id=id).first()
     reviews = Review.query.filter_by(productid=id).all()
     me = User.query.filter_by(id=id).first()
-    print(product)
-    print(reviews)
+    db.session.add(Log(userid=me.id, productid=product.id))
+    db.session.commit()
     return render_template('product.html',
                            product=product,
                            reviews=reviews,

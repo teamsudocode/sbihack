@@ -1,5 +1,5 @@
 # QUANT
-### Your Personal Banking Assistant
+### Opting for bank schemes just got smarter
 
 #### Instruction to set up Quant
 

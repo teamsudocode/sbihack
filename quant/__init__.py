@@ -2,14 +2,14 @@
 
 from flask import Flask, render_template, jsonify, request, g
 from models import *
-import json
-import random
+import os
 from datetime import datetime, timedelta
 
 app = create_app()
 app.app_context().push()
 # app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://qazcaywcwosjgf:bb483147a4ce9d58f35352d01e0f50997a481d33be5afb5c0a1ff16e54672155@ec2-23-23-222-147.compute-1.amazonaws.com:5432/d9jgm1c04movjn"
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
+# app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://qazcaywcwosjgf:bb483147a4ce9d58f35352d01e0f50997a481d33be5afb5c0a1ff16e54672155@ec2-23-23-222-147.compute-1.amazonaws.com:5432/d9jgm1c04movjn"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
 db.create_all(app=app)

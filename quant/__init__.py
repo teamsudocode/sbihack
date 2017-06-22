@@ -8,7 +8,8 @@ from datetime import datetime, timedelta
 
 app = create_app()
 app.app_context().push()
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
+# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://qazcaywcwosjgf:bb483147a4ce9d58f35352d01e0f50997a481d33be5afb5c0a1ff16e54672155@ec2-23-23-222-147.compute-1.amazonaws.com:5432/d9jgm1c04movjn"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
 db.create_all(app=app)
@@ -43,7 +44,7 @@ def customer_dashboard():
 @app.route("/customer/loans")
 def customer_loans():
     loans = Homeloan.query.limit(5).all()
-    loans.append(EduLoan.query.limit(5).all())
+    loans.extend(EduLoan.query.limit(5).all())
     random.shuffle(loans)
     return render_template("loans.html", loans=loans)
 

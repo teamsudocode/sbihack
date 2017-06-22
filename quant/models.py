@@ -101,7 +101,7 @@ class Review(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     created_at = db.Column(db.DateTime, default=datetime.now())
     userid = db.Column(db.Integer, db.ForeignKey('user.id'))
-    productid = db.Column(db.String(2), db.ForeignKey('product.id'))
+    productid = db.Column(db.Integer, db.ForeignKey('product.id'))
     rating = db.Column(db.Integer, nullable=False)
     title = db.Column(db.String(100), nullable=False)
     comment = db.Column(db.String(500))
@@ -162,7 +162,7 @@ class Account(db.Model):
     __tablename__ = "account"
     # sqlite doesn't allow floating points, so store as strings
     account_number = db.Column(db.String(20), primary_key=True)
-    owner_cif = db.Column(db.String(20), db.ForeignKey("user.cif"))
+    owner_cif = db.Column(db.String(20))
     balance = db.Column(db.String(10), nullable=False, default=0)
 
     def __init__(self, account_number, owner_cif, balance):
@@ -210,6 +210,9 @@ class Homeloan(db.Model):
     ageUpperLimit = db.Column(db.Integer)
     CustomerType = db.Column(db.String(100))
     Comments = db.Column(db.String(100))
+    productId = db.Column(db.Integer, db.ForeignKey("product.id"))
+
+    product = relationship("Product")
 
 
     def calc_emi(self,N,P) :
@@ -220,7 +223,7 @@ class Homeloan(db.Model):
     def __init__(self, Id, LoanName, InterestRate,  
                  TenureUpperLimit, PrincipalLowerLimit, PrincipalUpperLimit, 
                  PrePaymentPenalty, FlexiPay, ageLowerLimit, ageUpperLimit, 
-                    CustomerType, Comments):
+                    CustomerType, Comments, productId):
         self.Id = Id
         self.LoanName = LoanName
         self.InterestRate = InterestRate
@@ -233,6 +236,7 @@ class Homeloan(db.Model):
         self.ageUpperLimit = ageUpperLimit
         self.CustomerType = CustomerType
         self.Comments = Comments
+        self.productId = productId
 
     def __repr__(self):
         return '<Homeloan %r' % self.Id
@@ -240,6 +244,15 @@ class Homeloan(db.Model):
     @property
     def Tenure(self):
         return self.TenureUpperLimit
+
+    @property
+    def avgStars(self):
+        reviews = Review.query.filter_by(productid=self.productId).all()
+        try:
+            return int(sum([rev.rating for rev in reviews]) / len(reviews))
+        except ZeroDivisionError:
+            return 0
+
 
 
 class EduLoan(db.Model):
@@ -260,6 +273,21 @@ class EduLoan(db.Model):
     Gender = db.Column(db.String(10))
     Concession = db.Column(db.Float)
     Comments = db.Column(db.String(100))
+    productId = db.Column(db.Integer, db.ForeignKey("product.id"))
+
+    product = relationship("Product")
+
+    @property
+    def avgStars(self):
+        reviews = Review.query.filter_by(productid=self.productId).all()
+        try:
+            return int(sum([rev.rating for rev in reviews]) / len(reviews))
+        except ZeroDivisionError:
+            return 0
+
+    @property
+    def InterestRate(self):
+        return self.EffInterestRate
 
     def calc_emi(self,N,P) :
         r = self.EffInterestRate - self.Concession
@@ -267,7 +295,7 @@ class EduLoan(db.Model):
         return tot_emi
 
     def __init__(self, Id, LoanType, Tenure, EffInterestRate, ResetPeriod, Nationality, CourseType,
-                 InstituteType, InstituteCountry, LoanLimit, Security, Gender, Concession, Comments):
+                 InstituteType, InstituteCountry, LoanLimit, Security, Gender, Concession, Comments, productid):
         self.Id = Id
         self.LoanName = LoanType
         self.Tenure = Tenure
@@ -282,6 +310,7 @@ class EduLoan(db.Model):
         self.Gender = Gender
         self.Concession = Concession
         self.Comments = Comments
+        self.productId = productid
 
     def __repr__(self):
         return '<Eduloan %r>' % self.Id
@@ -347,7 +376,7 @@ class Transaction(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     timestamp = db.Column(db.DateTime, default=datetime.now())
     amount = db.Column(db.Integer, nullable=False)
-    accountNumber = db.Column(db.String(20), db.ForeignKey("account.account_number"))
+    accountNumber = db.Column(db.String(20))
 
     def __repr__(self):
         return "<Transaction timestamp='%s' amount='%s' accountNumber='%s' >" % (

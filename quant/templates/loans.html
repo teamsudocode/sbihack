@@ -1,58 +1,47 @@
 {% extends "customer_base.html" %}
 
 {% block main_content %}
+
 <!--loans results-->
 <div class="col-sm-6" id="loans">
     <h2>Showing 1-25 of the total 1625 loan schemes</h2>
     <div id="product-list">
+        {% for loan in loans %}
         <div class="product-card">
-            <label>Home Loan</label>
-            <h1>₹20 Lac at ₹4500/month</h1>
-            <h2>Rate of Interest: 7%</h2>
-            <h2>Tenure:12 years</h2>
+            <label>
+                {% if loan.__tablename__ == "homeloan" %}Home loan{% else %}Education Loan{% endif %}
+            </label>
+            <!-- <h1>₹20 Lac at ₹4500/month</h1> -->
+            <h1>{{ loan.LoanName }}</h1>
+            <h2>Rate of Interest: {{ loan.InterestRate }}%</h2>
+            <h2>Tenure: {{ loan.Tenure }} years</h2>
             <div id="ratings">
-                <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span></div>
+                <div id="stars">
+                    {% for i in range(loan.avgStars) %}
+                        <i class="material-icons given">star_border</i>
+                    {% endfor %}
+                    {% for i in range(5 - loan.avgStars | int) %}
+                        <i class="material-icons ngiven">star_border</i>
+                    {% endfor %}
+                </div>
             </div>
             <div id="customers">
-                <i class="material-icons">people_outline</i>Recommended by 23 users</div>
-            <button id="view">View Details</button>
+                <i class="material-icons">people_outline</i>Recommended by {{ range(1, 30) | random }} users</div>
+            <button id="view" onclick="document.location.href=('/product/{{ loan.productId }}')">View Details</button>
         </div>
-        <div class="product-card">
-            <label>Home Loan</label>
-            <h1>₹20 Lac at ₹4500/month</h1>
-            <h2>Rate of Interest: 7%</h2>
-            <h2>Tenure:12 years</h2>
-            <div id="ratings">
-                <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span></div>
-            </div>
-            <div id="customers">
-                <i class="material-icons">people_outline</i>Recommended by 23 users</div>
-            <button id="view">View Details</button>
-        </div>
-        <div class="product-card">
-            <label>Home Loan</label>
-            <h1>₹20 Lac at ₹4500/month</h1>
-            <h2>Rate of Interest: 7%</h2>
-            <h2>Tenure:12 years</h2>
-            <div id="ratings">
-                <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span></div>
-            </div>
-            <div id="customers">
-                <i class="material-icons">people_outline</i>Recommended by 23 users</div>
-            <button id="view">View Details</button>
-        </div>
-        <div class="product-card">
-            <label>Home Loan</label>
-            <h1>₹20 Lac at ₹4500/month</h1>
-            <h2>Rate of Interest: 7%</h2>
-            <h2>Tenure:12 years</h2>
-            <div id="ratings">
-                <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span></div>
-            </div>
-            <div id="customers">
-                <i class="material-icons">people_outline</i>Recommended by 23 users</div>
-            <button id="view">View Details</button>
-        </div>
+        {% endfor %}
+        <!-- <div class="product-card"> -->
+        <!-- <label>Home Loan</label> -->
+        <!-- <h1>₹20 Lac at ₹4500/month</h1> -->
+        <!-- <h2>Rate of Interest: 7%</h2> -->
+        <!-- <h2>Tenure:12 years</h2> -->
+        <!-- <div id="ratings"> -->
+        <!-- <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span></div> -->
+        <!-- </div> -->
+        <!-- <div id="customers"> -->
+        <!-- <i class="material-icons">people_outline</i>Recommended by 23 users</div> -->
+        <!-- <button id="view">View Details</button> -->
+        <!-- </div> -->
     </div>
 </div>
 

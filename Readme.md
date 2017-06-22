@@ -10,9 +10,9 @@ Here are some links you can test out:
 
 #### Instruction to set up Quant
 
-1. If pip3 is not installed :
-    1. sudo apt-get install python3-setuptools
-    2. sudo easy_install3 pip
+1. If pip3/python3 is not installed
+   * [Here's a tutorial for Python3](https://tutorial.djangogirls.org/en/python_installation/)
+   * [Here's for pip3](https://pip.pypa.io/en/stable/installing/)
 2. Open terminal in folder sbihack
 3. sudo pip3 install -r requirements.txt
 4. ```cd quant/```

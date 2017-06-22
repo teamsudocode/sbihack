@@ -8,7 +8,8 @@ Here are some links you can test out:
 * [Bank's space](https://quant-sudocode.herokuapp.com/bank/dashboard)
 * [Support team's space](https://quant-sudocode.herokuapp.com/bank/support)
 
-#### Instruction to set up Quant
+
+#### Instruction to set up Quant locally
 
 1. If pip3/python3 is not installed
    * [Here's a tutorial for Python3](https://tutorial.djangogirls.org/en/python_installation/)

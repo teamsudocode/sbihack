@@ -4,7 +4,7 @@
 
 <!--loans results-->
 <div class="col-sm-6" id="loans">
-    <h2>Showing 1-25 of the total 1625 loan schemes</h2>
+    <h2>Showing {{ loans | length }} loan schemes</h2>
     <div id="product-list">
         {% for loan in loans %}
         <div class="product-card">

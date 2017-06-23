@@ -56,7 +56,9 @@ def customer_deposits():
 
 @app.route("/customer/insurance")
 def customer_insurance():
-    return render_template("insurance.html")
+    insurances = Insurance.query.limit(5).all()
+    random.shuffle(insurances)
+    return render_template("insurance.html", insurance_list=insurances)
 
 
 # modify the routes below using old routes

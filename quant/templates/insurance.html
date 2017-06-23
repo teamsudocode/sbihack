@@ -4,45 +4,31 @@
 {% block main_content %}
 <!--loans results-->
 <div class="col-sm-6" id="loans">
-    <h2>Showing 1-25 of the total 1239 insurance schemes</h2>
     <div id="product-list">
+        {% for ins in insurance_list %}
         <div class="product-card">
-            <label>Whole Life</label>
-            <h1>Complete life insurance</h1>
-            <h2>Rate of Interest: 15%</h2>
-            <h2>Minimum Deposit: ₹4500/month</h2>
+            <label>{{ ins.Category }}</label>
+            <h1>{{ ins.InsuranceType }}</h1>
+            <h2>Maturity rate: {{ ins.MaturityRate }}</h2>
+            <h2>Premium: ₹ {{ ins.MinPremiumAmount }} {%if ins.MaxPremiumAmount != "Infinite" %}to ₹ {{ ins.MaxPremiumAmount }}{% endif %} {{ ins.PremiumFreq }} </h2>
+            <h2>Term: {{ ins.PayingTerm }} years </h2>
+            <h2>Profit: ₹ {{ ins.profit(ins.PayingTerm) }}</h2>
             <div id="ratings">
-                <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span></div>
+                <div id="stars">
+                    {% for i in range(ins.avgStars) %}
+                        <i class="material-icons given">star_border</i>
+                    {% endfor %}
+                    {% for i in range(5 - ins.avgStars | int) %}
+                        <i class="material-icons ngiven">star_border</i>
+                    {% endfor %}
+                </div>
             </div>
             <div id="customers">
-                <i class="material-icons">people_outline</i>Recommended by 213 users</div>
-            <button id="view">View Details</button>
-        </div>
+                <i class="material-icons">people_outline</i>Recommended by {{ range(1, 30) | random }} users</div>
+            <button id="view" onclick="document.location.href=('/product/{{ ins.productId }}')">View Details</button>
+            </div>
+            {% endfor %}
 
-        <div class="product-card">
-            <label>Whole Life</label>
-            <h1>Complete life insurance</h1>
-            <h2>Rate of Interest: 15%</h2>
-            <h2>Minimum Deposit: ₹4500/month</h2>
-            <div id="ratings">
-                <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span></div>
-            </div>
-            <div id="customers">
-                <i class="material-icons">people_outline</i>Recommended by 213 users</div>
-            <button id="view">View Details</button>
-        </div>
-        <div class="product-card">
-            <label>Whole Life</label>
-            <h1>Complete life insurance</h1>
-            <h2>Rate of Interest: 15%</h2>
-            <h2>Minimum Deposit: ₹4500/month</h2>
-            <div id="ratings">
-                <div id="stars"><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons given">star_border</i><i class="material-icons ngiven">star_border</i><span>4.0/5.0</span></div>
-            </div>
-            <div id="customers">
-                <i class="material-icons">people_outline</i>Recommended by 213 users</div>
-            <button id="view">View Details</button>
-        </div>
         <div class="product-card">
             <label>Whole Life</label>
             <h1>Complete life insurance</h1>

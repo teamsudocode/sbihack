@@ -333,6 +333,18 @@ class Insurance(db.Model):
     MaxPremiumAmount = db.Column(db.String(20))
     Category = db.Column(db.String(80))
     MaturityRate = db.Column(db.Integer)
+    productId = db.Column(db.Integer, db.ForeignKey("product.id"))
+
+    product = relationship("Product")
+
+    @property
+    def avgStars(self):
+        reviews = Review.query.filter_by(productid=self.productId).all()
+        try:
+            return int(sum([rev.rating for rev in reviews]) / len(reviews))
+        except ZeroDivisionError:
+            return 0
+
 
     def profit(self, t):
         r = self.MaturityRate
@@ -348,7 +360,7 @@ class Insurance(db.Model):
         return (final_amount - initial_amount)
 
     def __init__(self, Id, InsuranceType, InsuranceAmount, MinPolicyTerm, MaxPolicyTerm,PayingTerm, MinAgeEntry, MaxAgeEntry, MinAgeMaturity,
-                    MaxAgeMaturity, PremiumFreq, MinPremiumAmount, MaxPremiumAmount, Category, MaturityRate):
+                    MaxAgeMaturity, PremiumFreq, MinPremiumAmount, MaxPremiumAmount, Category, MaturityRate, productid):
         self.Id = Id
         self.InsuranceType = InsuranceType
         self.InsuranceAmount = InsuranceAmount
@@ -364,6 +376,7 @@ class Insurance(db.Model):
         self.MaxPremiumAmount = MaxPremiumAmount
         self.Category = Category
         self.MaturityRate = MaturityRate
+        self.productId = productid
 
     def __repr__(self):
         return '<Insurance %r>' % self.Id
